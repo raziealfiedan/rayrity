@@ -5,25 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rayrity Films — Cinematic Production Company</title>
 <meta name="description" content="Rayrity Films is a cinematic production company based in Sabah. We build narratives, frame by frame, for those who refuse the obvious.">
-<meta name="theme-color" content="#ffffff">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23ffffff'/%3E%3Crect x='30' y='30' width='40' height='40' fill='%23e2231a'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23050505'/%3E%3Crect x='30' y='30' width='40' height='40' fill='%23e2231a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-  /* ---------- Tokens ---------- */
+  /* ---------- High-Contrast Noir Tokens ---------- */
   :root {
-    --bg: #ffffff;
-    --bg-soft: #f9f9f9;
-    --bg-elev: #eeeeee;
-    --fg: #0a0a0a;
-    --fg-dim: #5a5a5a;
-    --fg-faint: #888888;
+    --bg: #050505;
+    --bg-soft: #0f0f0f;
+    --bg-elev: #1a1a1a;
+    --fg: #f5f5f5;
+    --fg-dim: #a3a3a3;
+    --fg-faint: #555555;
     --red: #e2231a;
     --red-dim: #b81b14;
-    --line: rgba(10, 10, 10, 0.12);
-    --line-soft: rgba(10, 10, 10, 0.06);
+    --line: rgba(255, 255, 255, 0.15);
+    --line-soft: rgba(255, 255, 255, 0.05);
     --font-display: 'Bebas Neue', sans-serif;
     --font-body: 'Inter', sans-serif;
     --ease: cubic-bezier(0.19, 1, 0.22, 1);
@@ -32,27 +32,20 @@
   }
 
   * { box-sizing: border-box; }
-  html { font-size: 62.5%; scroll-behavior: smooth; }
+  html { font-size: 62.5%; scroll-behavior: smooth; background: var(--bg); }
   body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: var(--font-body);
-    font-size: 1.6rem;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: var(--font-body); font-size: 1.6rem; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
   img { max-width: 100%; display: block; height: auto; }
   a { color: inherit; text-decoration: none; transition: color 0.3s var(--ease); }
   ul, ol { margin: 0; padding: 0; list-style: none; }
-  h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 400; letter-spacing: 0.02em; line-height: 1.05; }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 400; letter-spacing: 0.02em; line-height: 1.05; text-transform: uppercase; }
   p { margin: 0; }
   button { font-family: inherit; cursor: pointer; background: none; border: none; color: inherit; }
-  input { font-family: inherit; }
   svg { display: block; }
-
   :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 5vw; }
@@ -66,8 +59,7 @@
 
   /* ---------- Scroll Reveal Animation ---------- */
   .reveal {
-    opacity: 0;
-    transform: translateY(4rem);
+    opacity: 0; transform: translateY(4rem);
     transition: opacity 1s var(--ease), transform 1s var(--ease);
     will-change: opacity, transform;
   }
@@ -78,43 +70,23 @@
   /* grain overlay */
   .grain {
     position: fixed; inset: 0; z-index: 2; pointer-events: none;
-    opacity: 0.035; mix-blend-mode: multiply;
+    opacity: 0.04; mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-
-  /* skip link */
-  .skip-link {
-    position: absolute; left: -9999px; top: 0; z-index: 10000;
-    background: var(--red); color: #fff; padding: 1rem 1.6rem; font-weight: 700;
-  }
+  .skip-link { position: absolute; left: -9999px; top: 0; z-index: 10000; background: var(--red); color: #fff; padding: 1rem 1.6rem; font-weight: 700; }
   .skip-link:focus { left: 1rem; top: 1rem; }
 
   /* ---------- Custom cursor ---------- */
   .cursor {
     position: fixed; top: 0; left: 0; width: 1.8rem; height: 1.8rem;
-    border: 1px solid var(--red); border-radius: 50%;
-    transform: translate3d(-50%, -50%, 0);
+    border: 1px solid var(--red); border-radius: 50%; transform: translate3d(-50%, -50%, 0);
     pointer-events: none; z-index: 9999;
     transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out), background-color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
     display: none;
   }
   .cursor.is-active { display: block; }
-  .cursor--hover { width: 5rem; height: 5rem; background: rgba(226, 35, 26, 0.05); border-color: rgba(226, 35, 26, 0.5); }
+  .cursor--hover { width: 5rem; height: 5rem; background: rgba(226, 35, 26, 0.1); border-color: rgba(226, 35, 26, 0.8); }
   @media (hover:none), (pointer:coarse) { .cursor { display: none !important; } }
-
-  /* ---------- Preloader ---------- */
-  .preloader {
-    position: fixed; inset: 0; background: var(--bg); z-index: 9998;
-    display: flex; align-items: center; justify-content: center;
-    transition: opacity 0.8s var(--ease), visibility 0.8s var(--ease);
-  }
-  .preloader__mark {
-    font-family: var(--font-display); font-size: clamp(3rem, 5vw, 6rem); letter-spacing: 0.08em;
-    display: flex; align-items: center; gap: 1.2rem; color: var(--fg);
-  }
-  .preloader__sq { width: 1.6rem; height: 1.6rem; background: var(--red); animation: pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-  @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.5); opacity: 0.5; } }
-  .preloader.is-done { opacity: 0; visibility: hidden; }
 
   /* ---------- Header ---------- */
   .nav {
@@ -123,7 +95,7 @@
     padding: 2.8rem 5vw; transition: background 0.4s var(--ease), padding 0.4s var(--ease), border-color 0.4s var(--ease);
     border-bottom: 1px solid transparent;
   }
-  .nav.is-scrolled { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); padding: 1.8rem 5vw; border-color: var(--line); }
+  .nav.is-scrolled { background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(12px); padding: 1.8rem 5vw; border-color: var(--line); }
   .nav__logo { display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-display); font-size: 2.6rem; letter-spacing: 0.05em; z-index: 901; }
   .nav__logo-mark { width: 1.2rem; height: 1.2rem; background: var(--red); display: inline-block; }
   .nav__links { display: flex; gap: 3.6rem; }
@@ -144,16 +116,10 @@
   .menu {
     position: fixed; inset: 0; z-index: 800; background: var(--bg);
     display: flex; flex-direction: column; justify-content: space-between;
-    padding: 12rem 5vw 6rem;
-    transform: translateY(-100%);
-    visibility: hidden;
+    padding: 12rem 5vw 6rem; transform: translateY(-100%); visibility: hidden;
     transition: transform 0.7s var(--ease), visibility 0s 0.7s;
   }
-  .menu.is-open { 
-    transform: translateY(0); 
-    visibility: visible;
-    transition: transform 0.7s var(--ease), visibility 0s 0s;
-  }
+  .menu.is-open { transform: translateY(0); visibility: visible; transition: transform 0.7s var(--ease), visibility 0s 0s; }
   .menu__list { display: flex; flex-direction: column; gap: 1.2rem; }
   .menu__item { display: flex; align-items: baseline; gap: 2rem; overflow: hidden; }
   .menu__num { font-family: var(--font-body); font-size: 1.4rem; color: var(--red); font-weight: 700; }
@@ -170,17 +136,16 @@
   /* ---------- Hero ---------- */
   .hero { position: relative; height: 100vh; min-height: 60rem; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
   .hero__bg-wrap { position: absolute; inset: 0; overflow: hidden; }
-  .hero__bg { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(1.1); transform: scale(1); animation: kenburns 25s ease-out infinite alternate; }
+  .hero__bg { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.2) brightness(0.7); transform: scale(1); animation: kenburns 25s ease-out infinite alternate; }
   @keyframes kenburns { from { transform: scale(1) translate(0, 0); } to { transform: scale(1.08) translate(-1%, -1%); } }
-  .hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,1) 100%); }
+  .hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0.7) 50%, rgba(5,5,5,1) 100%); }
   .hero__content { position: relative; z-index: 2; padding: 0 5vw 8vh; max-width: var(--maxw); margin: 0 auto; width: 100%; }
   .hero__eyebrow { margin-bottom: 3rem; }
   .hero__rotator { position: relative; height: clamp(10rem, 26vw, 22rem); }
   .hero__line {
     position: absolute; left: 0; top: 0; right: 0;
-    font-family: var(--font-display); font-size: clamp(4rem, 9.5vw, 10rem); letter-spacing: 0.01em; line-height: 0.95;
-    opacity: 0; transform: translateY(2rem);
-    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    font-family: var(--font-display); font-size: clamp(4rem, 9.5vw, 10rem); letter-spacing: 0.01em; line-height: 0.95; text-transform: none;
+    opacity: 0; transform: translateY(2rem); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
   }
   .hero__line.is-active { opacity: 1; transform: translateY(0); }
   .hero__line em { color: var(--red); font-style: normal; }
@@ -195,7 +160,7 @@
   /* ---------- Section Shells ---------- */
   .section { position: relative; padding: 14rem 0; border-top: 1px solid var(--line-soft); }
   .section__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 4rem; margin-bottom: 8rem; flex-wrap: wrap; }
-  .section__title { font-size: clamp(3.6rem, 7vw, 6.4rem); max-width: 65rem; margin-top: 2rem; }
+  .section__title { font-size: clamp(3.6rem, 7vw, 6.4rem); max-width: 65rem; margin-top: 2rem; text-transform: none; }
   .section__title em { color: var(--red); font-style: normal; }
   .section__lede { max-width: 42rem; color: var(--fg-dim); font-size: 1.7rem; font-weight: 300; line-height: 1.6; }
 
@@ -206,14 +171,10 @@
   .acts__ring { width: 100%; height: 100%; transform: rotate(-90deg); }
   .acts__ring-track { fill: none; stroke: var(--line-soft); stroke-width: 1.5; }
   .acts__ring-progress { fill: none; stroke: var(--red); stroke-width: 2; stroke-linecap: round; transition: stroke-dashoffset 0.8s var(--ease); }
-  
-  /* Fix applied here: transform-origin set directly on the group */
   #ringBlades { transform-origin: 100px 100px; transition: transform 0.8s var(--ease); }
   .acts__blade { stroke: var(--fg-dim); stroke-width: 1.5; fill: none; transition: stroke 0.4s var(--ease); }
-  
   .acts__ring-label { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
   
-  /* REC indicator styling */
   .acts__ring-index { font-size: 1.2rem; color: var(--red); font-weight: 700; letter-spacing: 0.15em; margin-bottom: 0.8rem; display: flex; align-items: center; }
   .rec-dot { display: inline-block; width: 6px; height: 6px; background: var(--red); border-radius: 50%; margin-right: 8px; animation: blink 1.5s infinite; }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
@@ -226,12 +187,41 @@
   .acts__panels { display: flex; flex-direction: column; gap: 12rem; }
   .acts__panel { opacity: 0.25; transition: opacity 0.7s var(--ease); }
   .acts__panel.is-active { opacity: 1; }
-  .acts__img-wrap { aspect-ratio: 16/9; overflow: hidden; margin-bottom: 3.6rem; position: relative; background: var(--bg-elev); }
-  .acts__img-wrap::after { content: ''; position: absolute; inset: 0; background: var(--red); opacity: 0; mix-blend-mode: multiply; transition: opacity 0.6s var(--ease); }
-  .acts__panel.is-active .acts__img-wrap::after { opacity: 0.1; }
-  .acts__img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Photo Slider Marquee */
+  .acts__img-wrap { 
+    width: 100%; overflow: hidden; background: var(--bg-elev); margin-bottom: 3.6rem; 
+    position: relative; border: 1px solid var(--line-soft); display: flex;
+  }
+  .acts__img-wrap::after { 
+    content: ''; position: absolute; inset: 0; background: var(--red); 
+    opacity: 0; mix-blend-mode: color-burn; transition: opacity 0.6s var(--ease); pointer-events: none;
+  }
+  .acts__panel.is-active .acts__img-wrap::after { opacity: 0.15; }
+  
+  .marquee__track {
+    display: flex; width: max-content;
+    animation: scrollMarquee 25s linear infinite;
+  }
+  /* Removed the pause animation on hover as requested */
+  
+  .marquee__track img {
+    height: clamp(250px, 40vw, 400px); width: auto; aspect-ratio: 16/9; object-fit: cover;
+    margin-right: 1.2rem;
+    filter: grayscale(1) contrast(1.2); /* Deep noir contrast by default */
+    transition: filter 0.6s var(--ease);
+  }
+  
+  /* When hovering over the strip, all images in the track change to color */
+  .acts__img-wrap:hover .marquee__track img { filter: grayscale(0) contrast(1.1); }
+
+  @keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+  }
+
   .acts__num { display: block; font-size: 1.2rem; color: var(--red); font-weight: 700; letter-spacing: 0.15em; margin-bottom: 1.6rem; }
-  .acts__panel h3 { font-size: clamp(3rem, 5vw, 4.6rem); margin-bottom: 2rem; }
+  .acts__panel h3 { font-size: clamp(3rem, 5vw, 4.6rem); margin-bottom: 2rem; text-transform: none; }
   .acts__panel p { max-width: 56rem; color: var(--fg-dim); font-size: 1.7rem; font-weight: 300; }
 
   @media (max-width: 960px) {
@@ -245,21 +235,47 @@
 
   /* ---------- Team Section ---------- */
   .team__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem; }
-  .team__card { border: 1px solid var(--line-soft); padding: 4rem; transition: background 0.5s var(--ease), transform 0.5s var(--ease), border-color 0.5s var(--ease); display: flex; flex-direction: column; background: var(--bg); }
-  .team__card:hover { background: var(--bg-soft); transform: translateY(-0.8rem); border-color: var(--line); }
+  .team__card { border: 1px solid var(--line-soft); padding: 4rem; transition: background 0.5s var(--ease), transform 0.5s var(--ease), border-color 0.5s var(--ease); display: flex; flex-direction: column; background: var(--bg-soft); }
+  .team__card:hover { background: var(--bg-elev); transform: translateY(-0.8rem); border-color: var(--line); }
+  
   .team__img-wrap { aspect-ratio: 4/5; overflow: hidden; margin-bottom: 3rem; background: var(--bg-elev); position: relative; }
-  .team__img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1); transition: filter 0.7s var(--ease), transform 1.2s var(--ease); }
-  .team__card:hover .team__img { filter: grayscale(0.2); transform: scale(1.04); }
+  
+  .team__img { 
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; 
+    filter: grayscale(1) contrast(1.2); transition: filter 0.5s var(--ease), transform 1.2s var(--ease); 
+  }
+  /* Colorizes and scales on hover */
+  .team__card:hover .team__img { filter: grayscale(0) contrast(1.1); transform: scale(1.05); }
+  
   .team__role { font-size: 1.1rem; color: var(--red); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.2rem; }
-  .team__name { font-family: var(--font-display); font-size: clamp(3.4rem, 4.5vw, 5.2rem); margin-bottom: 1.6rem; }
+  .team__name { font-family: var(--font-display); font-size: clamp(3.4rem, 4.5vw, 5.2rem); margin-bottom: 1.6rem; text-transform: none; }
   .team__bio { color: var(--fg-dim); font-size: 1.6rem; font-weight: 300; line-height: 1.6; max-width: 95%; }
 
   @media (max-width: 880px) { .team__grid { grid-template-columns: 1fr; gap: 3rem; } .team__card{ padding: 3rem; } }
 
-  /* ---------- Filterable Work Grid ---------- */
-  .work-filters {
-    display: flex; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 4rem;
+  /* ---------- Brand Ticker ---------- */
+  .client-ticker {
+    padding: 6rem 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
+    overflow: hidden; display: flex; background: var(--bg-soft);
   }
+  .client-ticker__track {
+    display: flex; gap: 8rem; align-items: center; width: max-content;
+    animation: scrollTicker 30s linear infinite;
+  }
+  .client-ticker__item {
+    font-family: var(--font-display); font-size: 3rem; letter-spacing: 0.05em; color: var(--fg-faint);
+    display: flex; align-items: center; gap: 8rem;
+  }
+  .client-ticker__item::after { content: ''; width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+  
+  @keyframes scrollTicker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+  }
+
+  /* ---------- Filterable Work Grid ---------- */
+  .work { padding-top: 14rem; }
+  .work-filters { display: flex; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 4rem; }
   .filter-btn {
     font-size: 1.2rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; 
     color: var(--fg-dim); padding: 0.8rem 2rem; border: 1px solid var(--line-soft); 
@@ -268,108 +284,88 @@
   .filter-btn:hover { border-color: var(--fg); color: var(--fg); }
   .filter-btn.is-active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.4rem;
-    transition: opacity 0.4s var(--ease);
-  }
-  
-  .work-item--featured { grid-column: span 2; grid-row: span 2; }
+  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4rem; transition: opacity 0.4s var(--ease); }
   
   .work-item {
-    position: relative;
-    aspect-ratio: 16/9;
-    background: var(--bg-elev);
-    overflow: hidden;
-    display: block;
-    border: 1px solid var(--line-soft);
+    position: relative; aspect-ratio: 16/9; background: #000; overflow: hidden;
+    display: block; border: 1px solid var(--line-soft); cursor: pointer;
   }
-  .work-item--featured { aspect-ratio: auto; }
   
   .work-item__img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.8s var(--ease), filter 0.5s var(--ease);
-    background-color: #333; 
+    width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease), filter 0.5s var(--ease);
+    opacity: 0.6; filter: grayscale(0.8);
   }
   .work-item__overlay {
     position: absolute; inset: 0; 
-    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
-    opacity: 0; transition: opacity 0.4s var(--ease);
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+    opacity: 1; transition: background 0.4s var(--ease);
     display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
   }
   
-  .work-item:hover .work-item__img { transform: scale(1.05); filter: brightness(0.7); }
-  .work-item:hover .work-item__overlay { opacity: 1; }
+  .work-item:hover .work-item__img { transform: scale(1.05); filter: grayscale(0); opacity: 1; }
   
   .work-item__role { font-size: 1.1rem; color: var(--red); font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.8rem; transform: translateY(1rem); transition: transform 0.4s var(--ease); }
-  .work-item__title { font-family: var(--font-display); font-size: clamp(2.4rem, 3vw, 3.6rem); color: #fff; transform: translateY(1rem); transition: transform 0.4s var(--ease) 0.05s; }
+  .work-item__title { font-family: var(--font-display); font-size: clamp(2.2rem, 2.5vw, 3rem); color: #fff; line-height: 1.1; transform: translateY(1rem); transition: transform 0.4s var(--ease) 0.05s; text-transform: none; }
   
   .work-item:hover .work-item__role,
   .work-item:hover .work-item__title { transform: translateY(0); }
   .work-item.is-hidden { display: none; }
+  
+  /* Play icon on hover */
+  .work-item__play {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
+    width: 6rem; height: 6rem; background: rgba(226, 35, 26, 0.9); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; opacity: 0; transition: all 0.4s var(--ease);
+  }
+  .work-item__play svg { width: 2.4rem; height: 2.4rem; fill: #fff; margin-left: 0.4rem; }
+  .work-item:hover .work-item__play { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
   @media (max-width: 960px) {
     .work-grid { grid-template-columns: repeat(2, 1fr); }
-    .work-item--featured { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/9; }
-    .work-item__overlay { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%); padding: 2rem;}
+    .work-item__overlay { padding: 2rem;}
     .work-item__role, .work-item__title { transform: translateY(0); }
   }
-  @media (max-width: 640px) {
-    .work-grid { grid-template-columns: 1fr; }
-    .work-item--featured { grid-column: 1 / -1; }
-  }
+  @media (max-width: 640px) { .work-grid { grid-template-columns: 1fr; } }
 
-  /* ---------- Services Links ---------- */
-  .links3 { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-soft); border-left: 1px solid var(--line-soft); }
-  .links3__card { position: relative; border-right: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); aspect-ratio: 3/4; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 4rem; background: var(--bg-elev); }
-  .links3__img { 
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; 
-    filter: grayscale(1) contrast(1.1) brightness(1.1); 
-    transition: transform 0.8s var(--ease), opacity 0.6s var(--ease), filter 0.6s var(--ease); 
-    opacity: 0.5; 
+  /* ---------- Video Modal ---------- */
+  .video-modal {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: all 0.5s var(--ease);
   }
-  .links3__card:hover .links3__img { 
-    transform: scale(1.05); 
-    opacity: 0.8; 
-    filter: grayscale(0) contrast(1.1) brightness(1.1);
-  }
+  .video-modal.is-active { opacity: 1; visibility: visible; }
   
-  /* OVERLAY CODE REMOVED HERE */
+  .video-modal__close {
+    position: absolute; top: 3rem; right: 4vw; color: #fff; font-size: 4rem; font-weight: 300;
+    line-height: 1; transition: color 0.3s var(--ease), transform 0.4s var(--ease);
+  }
+  .video-modal__close:hover { color: var(--red); transform: rotate(90deg); }
   
-  .links3__body { position: relative; z-index: 2; background: var(--bg); padding: 2rem; border: 1px solid var(--line-soft); transition: transform 0.4s var(--ease); transform: translateY(0); }
-  .links3__card:hover .links3__body { transform: translateY(-0.5rem); border-color: var(--line); }
-  .links3__label { font-family: var(--font-display); font-size: 3.6rem; margin-bottom: 1rem; }
-  .links3__sub { color: var(--fg-dim); font-size: 1.5rem; font-weight: 300; margin-bottom: 2rem; max-width: 24rem; }
-  .links3__arrow { width: 4rem; height: 4rem; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), background 0.4s var(--ease); }
-  .links3__card:hover .links3__arrow { transform: rotate(45deg); border-color: var(--red); background: var(--red); }
-  .links3__arrow svg { width: 1.8rem; height: 1.8rem; stroke: var(--fg); transition: stroke 0.4s var(--ease); }
-  .links3__card:hover .links3__arrow svg { stroke: #fff; }
+  .video-modal__content {
+    width: 90%; max-width: 1200px; aspect-ratio: 16/9; background: #000;
+    transform: translateY(4rem); transition: transform 0.6s var(--ease-out); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+  }
+  .video-modal.is-active .video-modal__content { transform: translateY(0); }
+  .video-modal iframe { width: 100%; height: 100%; border: none; display: block; }
 
-  @media (max-width: 960px) { .links3 { grid-template-columns: 1fr; } .links3__card { aspect-ratio: 16/9; padding: 3rem; } }
-
-  /* ---------- Newsletter ---------- */
-  .newsletter { border-top: 1px solid var(--line-soft); padding: 12rem 0; }
-  .newsletter__inner { display: flex; justify-content: space-between; align-items: flex-end; gap: 4rem; flex-wrap: wrap; }
-  .newsletter__copy { max-width: 50rem; }
-  .newsletter__title { font-size: clamp(3.2rem, 5.5vw, 5.2rem); margin-bottom: 1.6rem; }
-  .newsletter__lede { color: var(--fg-dim); font-weight: 300; font-size: 1.7rem; }
-  .newsletter__form { display: flex; gap: 0; min-width: 38rem; flex: 1; max-width: 54rem; border-bottom: 1px solid var(--line); padding-bottom: 0.5rem; transition: border-color 0.3s var(--ease); }
-  .newsletter__form:focus-within { border-color: var(--red); }
-  .newsletter__input { flex: 1; background: none; border: none; color: var(--fg); font-size: 1.8rem; padding: 1.2rem 0; font-weight: 300; }
-  .newsletter__input::placeholder { color: var(--fg-faint); }
-  .newsletter__input:focus { outline: none; }
-  .newsletter__btn { font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; font-size: 1.3rem; padding: 0 0.8rem; white-space: nowrap; display: flex; align-items: center; gap: 1rem; transition: color 0.3s var(--ease); }
-  .newsletter__btn svg { width: 1.8rem; height: 1.8rem; transition: transform 0.4s var(--ease); }
-  .newsletter__btn:hover { color: var(--red); }
-  .newsletter__btn:hover svg { transform: translateX(0.6rem); }
-  .newsletter__note { margin-top: 1.6rem; font-size: 1.3rem; color: var(--fg-faint); }
-  .newsletter__note.is-success { color: var(--red); font-weight: 500; }
-
-  @media (max-width: 640px) { .newsletter__form { min-width: 100%; } }
+  /* ---------- Giant CTA ---------- */
+  .big-cta {
+    padding: 20rem 0; text-align: center; border-top: 1px solid var(--line-soft);
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+  }
+  .big-cta__title { font-family: var(--font-display); font-size: clamp(6rem, 15vw, 14rem); line-height: 0.9; margin-bottom: 3rem; }
+  .big-cta__title em { color: var(--red); font-style: normal; }
+  .big-cta__btn {
+    display: inline-flex; align-items: center; gap: 1.4rem;
+    font-size: 1.4rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+    background: var(--red); color: #fff; padding: 2rem 4rem; border-radius: 4rem;
+    transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .big-cta__btn:hover { background: var(--red-dim); transform: translateY(-0.4rem); }
 
   /* ---------- Footer ---------- */
-  .footer { border-top: 1px solid var(--line-soft); padding: 10rem 0 4rem; background: var(--bg-soft); }
+  .footer { border-top: 1px solid var(--line-soft); padding: 10rem 0 4rem; background: #000; }
   .footer__top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8rem; flex-wrap: wrap; gap: 4rem; }
   .footer__brand { display: flex; align-items: center; gap: 1rem; font-family: var(--font-display); font-size: 3.8rem; letter-spacing: 0.02em; }
   .footer__brand-mark { width: 1.4rem; height: 1.4rem; background: var(--red); }
@@ -392,22 +388,13 @@
   .footer__top-btn:hover { color: var(--red); }
   .footer__top-btn svg { width: 1.6rem; height: 1.6rem; transform: rotate(-90deg); }
 
-  @media (max-width: 880px) {
-    .footer__cols { grid-template-columns: repeat(2, 1fr); row-gap: 5rem; }
-  }
+  @media (max-width: 880px) { .footer__cols { grid-template-columns: repeat(2, 1fr); row-gap: 5rem; } }
   @media (max-width: 560px) {
-    .wrap { padding: 0 6vw; }
-    .nav { padding: 2rem 6vw; }
-    .section { padding: 9rem 0; }
-    .footer { padding: 8rem 0 3rem; }
-    .footer__cols { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .wrap { padding: 0 6vw; } .nav { padding: 2rem 6vw; } .section { padding: 9rem 0; } .footer { padding: 8rem 0 3rem; } .footer__cols { grid-template-columns: 1fr 1fr; gap: 2rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .hero__bg { animation: none; }
-    .hero__chevron { animation: none; }
-    .preloader__sq { animation: none; }
+    html { scroll-behavior: auto; } .hero__bg { animation: none; } .hero__chevron { animation: none; }
     * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   }
 </style>
@@ -418,10 +405,6 @@
 <div class="grain" aria-hidden="true"></div>
 <div class="cursor" aria-hidden="true"></div>
 
-<div class="preloader" id="preloader" aria-hidden="true">
-  <div class="preloader__mark"><span class="preloader__sq"></span> RAYRITY FILMS</div>
-</div>
-
 <header class="nav" id="siteNav">
   <a class="nav__logo" href="#top" aria-label="Rayrity Films home">
     <span class="nav__logo-mark" aria-hidden="true"></span> RAYRITY FILMS
@@ -430,7 +413,6 @@
     <a class="nav__link" href="#studio">Studio</a>
     <a class="nav__link" href="#team">Team</a>
     <a class="nav__link" href="#work">Work</a>
-    <a class="nav__link" href="#services">Explore</a>
     <a class="nav__link" href="#contact">Contact</a>
   </nav>
   <button class="nav__toggle" id="menuToggle" aria-expanded="false" aria-controls="menuOverlay" aria-label="Open menu">
@@ -443,18 +425,17 @@
     <li class="menu__item"><span class="menu__num">I</span><a class="menu__link" href="#studio">Studio</a></li>
     <li class="menu__item"><span class="menu__num">II</span><a class="menu__link" href="#team">Team</a></li>
     <li class="menu__item"><span class="menu__num">III</span><a class="menu__link" href="#work">Work</a></li>
-    <li class="menu__item"><span class="menu__num">IV</span><a class="menu__link" href="#services">Explore</a></li>
-    <li class="menu__item"><span class="menu__num">V</span><a class="menu__link" href="#contact">Contact</a></li>
+    <li class="menu__item"><span class="menu__num">IV</span><a class="menu__link" href="#contact">Contact</a></li>
   </ul>
   <div class="menu__foot">
     <div class="menu__social">
-      <a href="#" target="_blank" rel="noopener">Instagram</a>
-      <a href="#" target="_blank" rel="noopener">Vimeo</a>
-      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/cliff_ray/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/@cliffordray2853" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.linkedin.com/in/raziealfiedan/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <div class="menu__contact">
-      <a href="mailto:cliff8392@gmail.com">cliff8392@gmail.com</a> <br>
-      <a href="tel:+601131723205">+6 011 3172 3205</a>
+      <!-- Removed email link directly to enforce whatsapp CTA, can add back if needed -->
+      <a href="https://wa.me/60165867492" target="_blank" rel="noopener">+60 16-586 7492</a>
     </div>
   </div>
 </div>
@@ -500,7 +481,6 @@
             <svg class="acts__ring" viewBox="0 0 200 200" aria-hidden="true">
               <circle class="acts__ring-track" cx="100" cy="100" r="84"/>
               <circle class="acts__ring-progress" id="ringProgress" cx="100" cy="100" r="84"/>
-              <!-- Camera Viewfinder Brackets -->
               <g id="ringBlades">
                 <path class="acts__blade" d="M 45 60 L 45 45 L 60 45"/>
                 <path class="acts__blade" d="M 155 60 L 155 45 L 140 45"/>
@@ -522,19 +502,49 @@
 
         <div class="acts__panels">
           <article class="acts__panel is-active" data-step="0">
-            <div class="acts__img-wrap"><img class="acts__img" src="assets/photos/process-pre.jpg" alt="Team storyboarding and scouting locations"></div>
+            <div class="acts__img-wrap">
+              <div class="marquee__track">
+                <img src="assets/photos/pre-1.jpg" alt="Pre-production 1">
+                <img src="assets/photos/pre-2.jpg" alt="Pre-production 2">
+                <img src="assets/photos/pre-3.jpg" alt="Pre-production 3">
+                <img src="assets/photos/pre-4.jpg" alt="Pre-production 4">
+                <img src="assets/photos/pre-5.jpg" alt="Pre-production 5">
+                <img src="assets/photos/pre-6.jpg" alt="Pre-production 6">
+                <img src="assets/photos/pre-7.jpg" alt="Pre-production 7">
+              </div>
+            </div>
             <span class="acts__num">01</span>
             <h3>Pre-Production</h3>
-            <p>Every project starts with absolute clarity of vision. We meticulously dissect the script, storyboard key frames, and scout environments long before a camera is built. Preparation is where the film is truly authored.</p>
+            <p>Every project starts with absolute clarity of vision. We meticulously dissect the script, storyboard key frames, and scout environments long before a camera is built.</p>
           </article>
           <article class="acts__panel" data-step="1">
-            <div class="acts__img-wrap"><img class="acts__img" src="assets/photos/process-shoot.jpg" alt="Camera operator framing a shot on set"></div>
+            <div class="acts__img-wrap">
+              <div class="marquee__track">
+                <img src="assets/photos/shoot-1.jpg" alt="Shoot 1">
+                <img src="assets/photos/shoot-2.jpg" alt="Shoot 2">
+                <img src="assets/photos/shoot-3.jpg" alt="Shoot 3">
+                <img src="assets/photos/shoot-4.jpg" alt="Shoot 4">
+                <img src="assets/photos/shoot-5.jpg" alt="Shoot 5">
+                <img src="assets/photos/shoot-6.jpg" alt="Shoot 6">
+                <img src="assets/photos/shoot-7.jpg" alt="Shoot 7">
+              </div>
+            </div>
             <span class="acts__num">02</span>
             <h3>Shoot</h3>
-            <p>Ideas earn their shape on set. Through precise lighting control, intentional directing, and dynamic cinematography, we capture the raw emotion required to build a compelling narrative. Nothing is left to chance.</p>
+            <p>Ideas earn their shape on set. Through precise lighting control, intentional directing, and dynamic cinematography, we capture the raw emotion required to build a compelling narrative.</p>
           </article>
           <article class="acts__panel" data-step="2">
-            <div class="acts__img-wrap"><img class="acts__img" src="assets/photos/process-post.jpg" alt="Editor working on a color grading suite"></div>
+            <div class="acts__img-wrap">
+              <div class="marquee__track">
+                <img src="assets/photos/post-1.jpg" alt="Post 1">
+                <img src="assets/photos/post-2.jpg" alt="Post 2">
+                <img src="assets/photos/post-3.jpg" alt="Post 3">
+                <img src="assets/photos/post-4.jpg" alt="Post 4">
+                <img src="assets/photos/post-5.jpg" alt="Post 5">
+                <img src="assets/photos/post-6.jpg" alt="Post 6">
+                <img src="assets/photos/post-7.jpg" alt="Post 7">
+              </div>
+            </div>
             <span class="acts__num">03</span>
             <h3>Post</h3>
             <p>A film isn't finished until the rhythm is found. We cut, color grade, and mix audio until the final piece commands attention. We carry the footage through to the exact moment it meets the audience.</p>
@@ -555,26 +565,47 @@
       </div>
 
       <div class="team__grid">
+        <!-- Clifford's Card -->
         <div class="team__card reveal reveal-delay-1">
           <div class="team__img-wrap">
-            <img class="team__img" src="assets/photos/team-clifford.jpg" alt="Clifford Ray portrait">
+            <img class="team__img" src="assets/photos/team-clifford-alt.jpg" alt="Clifford on set">
           </div>
           <span class="team__role">Founder & Director</span>
           <h3 class="team__name">Clifford Ray</h3>
-          <p class="team__bio">Clifford is an award-winning Director and Content Creative with over nine years of industry expertise. Specializing in visual storytelling and full-scale production management, his portfolio spans international brands like BMW and Etihad Airways, as well as major esports organizations including EVOS and Nigma Galaxy. His cinematic approach has earned him the Best Director nod at the BMW Shorties, and the Silver Award for the acclaimed documentary <em>Sea Gypsy of Semporna</em>.</p>
+          <p class="team__bio">Clifford is an award-winning Director and Content Creative with over nine years of industry expertise. Specializing in visual storytelling and full-scale production management, his portfolio spans international brands like BMW and Etihad Airways, as well as major esports organizations including EVOS and Nigma Galaxy.</p>
         </div>
 
+        <!-- Razie's Card -->
         <div class="team__card reveal reveal-delay-2">
           <div class="team__img-wrap">
-            <img class="team__img" src="assets/photos/team-razie.jpg" alt="Razie Alfiedan portrait">
+            <img class="team__img" src="assets/photos/team-razie-alt.jpg" alt="Razie behind the scenes">
           </div>
           <span class="team__role">Visual Artist</span>
           <h3 class="team__name">Razie Alfiedan</h3>
-          <p class="team__bio">Razie is a Strategic Marketing and Communications Manager who brings over 14 years of experience blending creative direction with data-driven strategy. He orchestrates the complete content lifecycle—from storyboarding to post-production—spearheading high-impact campaigns for prominent brands across healthcare, hospitality, and real estate. Razie excels at translating complex brand narratives into engaging, highly optimized multimedia experiences.</p>
+          <p class="team__bio">Razie is a Strategic Marketing and Communications Manager who brings over 14 years of experience blending creative direction with data-driven strategy. He orchestrates the complete content lifecycle—from storyboarding to post-production—spearheading high-impact campaigns for prominent brands.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- INFINITE BRAND TICKER (Builds Authority) -->
+  <div class="client-ticker">
+    <div class="client-ticker__track">
+      <span class="client-ticker__item">BMW SHORTIES</span>
+      <span class="client-ticker__item">NIGMA GALAXY</span>
+      <span class="client-ticker__item">EVOS ESPORTS</span>
+      <span class="client-ticker__item">GLENEAGLES HOSPITAL</span>
+      <span class="client-ticker__item">KKIP</span>
+      <span class="client-ticker__item">COCA-COLA X GRAB</span>
+      <!-- Duplicate for endless loop -->
+      <span class="client-ticker__item" aria-hidden="true">BMW SHORTIES</span>
+      <span class="client-ticker__item" aria-hidden="true">NIGMA GALAXY</span>
+      <span class="client-ticker__item" aria-hidden="true">EVOS ESPORTS</span>
+      <span class="client-ticker__item" aria-hidden="true">GLENEAGLES HOSPITAL</span>
+      <span class="client-ticker__item" aria-hidden="true">KKIP</span>
+      <span class="client-ticker__item" aria-hidden="true">COCA-COLA X GRAB</span>
+    </div>
+  </div>
 
   <!-- WORK SECTION -->
   <section class="section work" id="work">
@@ -596,256 +627,223 @@
       </div>
 
       <div class="work-grid reveal reveal-delay-2" id="workGrid">
-        <a href="#" class="work-item work-item--featured" data-category="esports commercial" aria-label="Watch BMW x Nigma Galaxy">
-          <img class="work-item__img" src="assets/photos/project-bmw-nigma.jpg" alt="BMW x Nigma in Dubai">
+        
+        <!-- NARRATIVE & DOC -->
+        <a href="https://www.youtube.com/embed/kUs5PkVu1gY" class="work-item" data-category="narrative" aria-label="Watch KKIFF Narrative">
+          <img class="work-item__img" src="https://img.youtube.com/vi/kUs5PkVu1gY/maxresdefault.jpg" alt="KKIFF Narrative">
           <div class="work-item__overlay">
-            <span class="work-item__role">Director & Post</span>
-            <h3 class="work-item__title">BMW x Nigma Galaxy (Dubai)</h3>
+            <span class="work-item__role">KKIFF Narrative Team 1</span>
+            <h3 class="work-item__title">Int. Room - Night</h3>
           </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-
-        <a href="#" class="work-item" data-category="narrative" aria-label="Watch Di Sini Aku">
-          <img class="work-item__img" src="assets/photos/project-disiniaku.jpg" alt="Di Sini Aku Poster">
+        <a href="https://www.youtube.com/embed/e0PrebKEeew" class="work-item" data-category="narrative" aria-label="Watch Finding Huminodun">
+          <img class="work-item__img" src="https://img.youtube.com/vi/e0PrebKEeew/maxresdefault.jpg" alt="Finding Huminodun">
           <div class="work-item__overlay">
-            <span class="work-item__role">Best Director - BMW Shorties</span>
+            <span class="work-item__role">Imago Video Contest</span>
+            <h3 class="work-item__title">Finding Huminodun</h3>
+          </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </a>
+        <a href="https://www.youtube.com/embed/gjH6wnZIplE" class="work-item" data-category="narrative" aria-label="Watch Toimo">
+          <img class="work-item__img" src="https://img.youtube.com/vi/gjH6wnZIplE/maxresdefault.jpg" alt="Toimo">
+          <div class="work-item__overlay">
+            <span class="work-item__role">Narrative</span>
+            <h3 class="work-item__title">Toimo</h3>
+          </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </a>
+        <a href="https://www.youtube.com/embed/p0XWTO16B4E" class="work-item" data-category="narrative" aria-label="Watch Kulintangan Si Bapa">
+          <img class="work-item__img" src="https://img.youtube.com/vi/p0XWTO16B4E/maxresdefault.jpg" alt="Kulintangan Si Bapa">
+          <div class="work-item__overlay">
+            <span class="work-item__role">Narrative</span>
+            <h3 class="work-item__title">Kulintangan Si Bapa</h3>
+          </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </a>
+        <a href="https://www.youtube.com/embed/IsnhTwSz5Vc" class="work-item" data-category="narrative" aria-label="Watch Di Sini Aku">
+          <img class="work-item__img" src="https://img.youtube.com/vi/IsnhTwSz5Vc/maxresdefault.jpg" alt="Di Sini Aku">
+          <div class="work-item__overlay">
+            <span class="work-item__role">BMW Shorties Finalist</span>
             <h3 class="work-item__title">Di Sini Aku</h3>
           </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-
-        <a href="#" class="work-item" data-category="narrative" aria-label="Watch The Other Side">
-          <img class="work-item__img" src="assets/photos/project-theotherside.jpg" alt="The Other Side Feature Film">
+        <a href="https://www.youtube.com/embed/irMXkq0hlr4" class="work-item" data-category="narrative" aria-label="Watch Ride Your Story">
+          <img class="work-item__img" src="https://img.youtube.com/vi/irMXkq0hlr4/maxresdefault.jpg" alt="Ride Your Story">
           <div class="work-item__overlay">
-            <span class="work-item__role">DOP - Feature Film</span>
-            <h3 class="work-item__title">The Other Side</h3>
-          </div>
-        </a>
-
-        <a href="#" class="work-item" data-category="narrative" aria-label="Watch Sea Gypsy of Semporna">
-          <img class="work-item__img" src="assets/photos/project-seagypsy.jpg" alt="Sea Gypsy of Semporna">
-          <div class="work-item__overlay">
-            <span class="work-item__role">Co-Director & Editor</span>
-            <h3 class="work-item__title">Sea Gypsy of Semporna</h3>
-          </div>
-        </a>
-
-        <!-- NARRATIVE & DOC -->
-        <a href="#" class="work-item" data-category="narrative" aria-label="Watch Limbai Cinta 2">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="Limbai Cinta 2">
-          <div class="work-item__overlay">
-            <span class="work-item__role">2nd Unit DOP - Telemovie</span>
-            <h3 class="work-item__title">Limbai Cinta 2</h3>
-          </div>
-        </a>
-        <a href="#" class="work-item" data-category="narrative" aria-label="Watch Ride Your Story">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="Ride Your Story">
-          <div class="work-item__overlay">
-            <span class="work-item__role">Editor</span>
+            <span class="work-item__role">TVS Entertainment</span>
             <h3 class="work-item__title">Ride Your Story</h3>
           </div>
-        </a>
-        <a href="#" class="work-item" data-category="narrative" aria-label="Watch Bungkas">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="Bungkas">
-          <div class="work-item__overlay">
-            <span class="work-item__role">Director</span>
-            <h3 class="work-item__title">Bungkas</h3>
-          </div>
-        </a>
-        <a href="#" class="work-item" data-category="narrative" aria-label="Watch The Lined Fish">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="The Lined Fish">
-          <div class="work-item__overlay">
-            <span class="work-item__role">Director</span>
-            <h3 class="work-item__title">The Lined Fish</h3>
-          </div>
-        </a>
-        <a href="#" class="work-item" data-category="narrative" aria-label="Watch Tindal">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="Tindal">
-          <div class="work-item__overlay">
-            <span class="work-item__role">Director</span>
-            <h3 class="work-item__title">Tindal</h3>
-          </div>
-        </a>
-        <a href="#" class="work-item" data-category="narrative" aria-label="Watch Louson">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="Louson">
-          <div class="work-item__overlay">
-            <span class="work-item__role">Director</span>
-            <h3 class="work-item__title">Louson</h3>
-          </div>
-        </a>
-        <a href="#" class="work-item" data-category="narrative" aria-label="Watch Rythm of Borneo">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="Rythm of Borneo">
-          <div class="work-item__overlay">
-            <span class="work-item__role">DOP</span>
-            <h3 class="work-item__title">Rythm of Borneo</h3>
-          </div>
-        </a>
-        <a href="#" class="work-item" data-category="narrative" aria-label="Watch S.A.T.U">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="S.A.T.U">
-          <div class="work-item__overlay">
-            <span class="work-item__role">Director</span>
-            <h3 class="work-item__title">S.A.T.U</h3>
-          </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
 
         <!-- ESPORTS -->
-        <a href="#" class="work-item" data-category="esports" aria-label="Watch Miracle Returns">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="Miracle Returns">
+        <a href="https://www.youtube.com/embed/2S-iJgrxAUg" class="work-item" data-category="esports" aria-label="Watch Nigma x BMW">
+          <img class="work-item__img" src="https://img.youtube.com/vi/2S-iJgrxAUg/maxresdefault.jpg" alt="Nigma x BMW">
           <div class="work-item__overlay">
-            <span class="work-item__role">Director / Creative</span>
-            <h3 class="work-item__title">Miracle Returns - Nigma (Jordan)</h3>
+            <span class="work-item__role">Esports Commercial</span>
+            <h3 class="work-item__title">Nigma x BMW</h3>
           </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="#" class="work-item" data-category="esports" aria-label="Watch EVOS Mika Reveal">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="EVOS Mika">
+        <a href="https://www.youtube.com/embed/BE81Gq_gSTU" class="work-item" data-category="esports" aria-label="Watch Miracle Returns">
+          <img class="work-item__img" src="https://img.youtube.com/vi/BE81Gq_gSTU/maxresdefault.jpg" alt="Miracle Returns">
           <div class="work-item__overlay">
-            <span class="work-item__role">Creative Producer</span>
-            <h3 class="work-item__title">EVOS Esports: Mika Reveal</h3>
+            <span class="work-item__role">Dota 2 Documentary</span>
+            <h3 class="work-item__title">Miracle Returns</h3>
           </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="#" class="work-item" data-category="esports" aria-label="Watch EVOS S3 Roster">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="EVOS Season 3">
+        <a href="https://www.youtube.com/embed/k8VJyls-M6g" class="work-item" data-category="esports" aria-label="Watch Jiggy Biggy Dallas">
+          <img class="work-item__img" src="https://img.youtube.com/vi/k8VJyls-M6g/maxresdefault.jpg" alt="Jiggy Biggy Dallas">
           <div class="work-item__overlay">
-            <span class="work-item__role">Creative Producer</span>
-            <h3 class="work-item__title">EVOS Esports: Season 3 Roster</h3>
+            <span class="work-item__role">Esports Doc (Dallas)</span>
+            <h3 class="work-item__title">Jiggy Biggy Best</h3>
           </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="#" class="work-item" data-category="esports" aria-label="Watch FreeFire NGX Doc">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="FreeFire NGX">
+        <a href="https://www.youtube.com/embed/4bRFOlru1Fw" class="work-item" data-category="esports" aria-label="Watch Jiggy Biggy Valencia">
+          <img class="work-item__img" src="https://img.youtube.com/vi/4bRFOlru1Fw/maxresdefault.jpg" alt="Jiggy Biggy Valencia">
           <div class="work-item__overlay">
-            <span class="work-item__role">Documentary</span>
-            <h3 class="work-item__title">FreeFire NGX Tournament</h3>
+            <span class="work-item__role">Esports Doc (Valencia)</span>
+            <h3 class="work-item__title">Jiggy Biggy Best</h3>
           </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="#" class="work-item" data-category="esports" aria-label="Watch ESL One Genting">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="ESL One Genting">
+        <a href="https://www.youtube.com/embed/lSWDn2zTiLY" class="work-item" data-category="esports" aria-label="Watch Jiggy Biggy Jönköping">
+          <img class="work-item__img" src="https://img.youtube.com/vi/lSWDn2zTiLY/maxresdefault.jpg" alt="Jiggy Biggy Jönköping">
           <div class="work-item__overlay">
-            <span class="work-item__role">Documentary</span>
-            <h3 class="work-item__title">ESL One Genting</h3>
+            <span class="work-item__role">A CS:GO Story</span>
+            <h3 class="work-item__title">Jiggy Biggy Jönköping</h3>
           </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="#" class="work-item" data-category="esports" aria-label="Watch NGX Wild Rift">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="NGX Wild Rift">
+        <a href="https://www.youtube.com/embed/MwFEZHrZFeU" class="work-item" data-category="esports" aria-label="Watch Nigma Galaxy Wild Rift">
+          <img class="work-item__img" src="https://img.youtube.com/vi/MwFEZHrZFeU/maxresdefault.jpg" alt="Nigma Galaxy Wild Rift">
           <div class="work-item__overlay">
-            <span class="work-item__role">Documentary</span>
-            <h3 class="work-item__title">NGX Wild Rift</h3>
+            <span class="work-item__role">Esports Documentary</span>
+            <h3 class="work-item__title">Nigma Galaxy Wild Rift</h3>
           </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </a>
+        
+        <!-- Facebook Reels (Opens in new tab) -->
+        <a href="https://www.facebook.com/reel/494262748741084" target="_blank" class="work-item" data-category="esports" aria-label="Watch EVOS Mika">
+          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="EVOS Mika Reveal">
+          <div class="work-item__overlay">
+            <span class="work-item__role">Social Promo</span>
+            <h3 class="work-item__title">EVOS Roster Reveal - Mika</h3>
+          </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
+        </a>
+        <a href="https://www.facebook.com/reel/493313281686197" target="_blank" class="work-item" data-category="esports" aria-label="Watch EVOS S5">
+          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="EVOS Season 5">
+          <div class="work-item__overlay">
+            <span class="work-item__role">Social Promo</span>
+            <h3 class="work-item__title">EVOS Season 5 Reveal</h3>
+          </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
         </a>
 
-        <!-- COMMERCIAL & CORPORATE -->
-        <a href="#" class="work-item" data-category="commercial" aria-label="Watch Gleneagles Specialist Videos">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="Gleneagles">
+        <!-- COMMERCIAL & MUSIC -->
+        <a href="https://www.youtube.com/embed/8MJJ4ekVyac" class="work-item" data-category="commercial" aria-label="Watch KKIP">
+          <img class="work-item__img" src="https://img.youtube.com/vi/8MJJ4ekVyac/maxresdefault.jpg" alt="KKIP">
           <div class="work-item__overlay">
-            <span class="work-item__role">Production</span>
-            <h3 class="work-item__title">Gleneagles Kota Kinabalu</h3>
+            <span class="work-item__role">Corporate Video</span>
+            <h3 class="work-item__title">KKIP 2024</h3>
           </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="#" class="work-item" data-category="commercial" aria-label="Watch KKIP Corporate Video">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="KKIP">
+        <a href="https://www.youtube.com/embed/uEEn_y4CJ28" class="work-item" data-category="music" aria-label="Watch Daddy Masih Kaya">
+          <img class="work-item__img" src="https://img.youtube.com/vi/uEEn_y4CJ28/maxresdefault.jpg" alt="Daddy Masih Kaya">
           <div class="work-item__overlay">
-            <span class="work-item__role">Production</span>
-            <h3 class="work-item__title">KKIP Corporate Video</h3>
+            <span class="work-item__role">Music Video</span>
+            <h3 class="work-item__title">Daddy Masih Kaya</h3>
           </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="#" class="work-item" data-category="commercial" aria-label="Watch V21 Residence Walkthrough">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="V21 Residence">
+        <a href="https://www.youtube.com/embed/LE8iHmGSfeE" class="work-item" data-category="music" aria-label="Watch Lintah Darat">
+          <img class="work-item__img" src="https://img.youtube.com/vi/LE8iHmGSfeE/maxresdefault.jpg" alt="Lintah Darat">
           <div class="work-item__overlay">
-            <span class="work-item__role">Residential Walkthrough</span>
+            <span class="work-item__role">Music Video</span>
+            <h3 class="work-item__title">Lintah Darat - Marsha</h3>
+          </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </a>
+        <a href="https://www.youtube.com/embed/dG2kiEYVEmU" class="work-item" data-category="music" aria-label="Watch KAMI KB">
+          <img class="work-item__img" src="https://img.youtube.com/vi/dG2kiEYVEmU/maxresdefault.jpg" alt="KAMI KB">
+          <div class="work-item__overlay">
+            <span class="work-item__role">Official Music Video</span>
+            <h3 class="work-item__title">KAMI KB - Dabra Sia</h3>
+          </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </a>
+
+        <!-- BRAND NEW: HEY KAMPUNG -->
+        <a href="https://www.youtube.com/embed/89hLNFWY36I" class="work-item" data-category="music" aria-label="Watch Hey Kampung">
+          <img class="work-item__img" src="https://img.youtube.com/vi/89hLNFWY36I/maxresdefault.jpg" alt="Hey Kampung Music Video">
+          <div class="work-item__overlay">
+            <span class="work-item__role">Official Music Video</span>
+            <h3 class="work-item__title">Hey Kampung - Queennera Francine</h3>
+          </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </a>
+        
+        <!-- Commercial FB links -->
+        <a href="https://www.facebook.com/reel/1043346399910938" target="_blank" class="work-item" data-category="commercial" aria-label="Watch V21 Residence">
+          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="V21 Residence">
+          <div class="work-item__overlay">
+            <span class="work-item__role">Promo Video</span>
             <h3 class="work-item__title">V21 Residence</h3>
           </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
         </a>
-        <a href="#" class="work-item" data-category="commercial" aria-label="Watch Coca-Cola x Grab">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="Coca-Cola x Grab">
+        <a href="https://www.facebook.com/reel/759378780006704" target="_blank" class="work-item" data-category="commercial" aria-label="Watch Gleneagles">
+          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="Gleneagles Kota Kinabalu">
           <div class="work-item__overlay">
-            <span class="work-item__role">Commercial</span>
-            <h3 class="work-item__title">Coca-Cola x Grab</h3>
+            <span class="work-item__role">Medical Promo</span>
+            <h3 class="work-item__title">Gleneagles - Dr Talal</h3>
           </div>
-        </a>
-        <a href="#" class="work-item" data-category="commercial" aria-label="Watch MadVape">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="MadVape">
-          <div class="work-item__overlay">
-            <span class="work-item__role">Commercial</span>
-            <h3 class="work-item__title">MadVape Shop</h3>
-          </div>
-        </a>
-
-        <!-- MUSIC & SOCIAL -->
-        <a href="#" class="work-item" data-category="music" aria-label="Watch Kami KB Music Video">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="Kami KB">
-          <div class="work-item__overlay">
-            <span class="work-item__role">Director - Music Video</span>
-            <h3 class="work-item__title">Kami KB - Dabra Sia ft. Taher</h3>
-          </div>
-        </a>
-        <a href="#" class="work-item" data-category="music" aria-label="Watch Daddy Masih Kaya Music Video">
-          <img class="work-item__img" src="assets/photos/project-placeholder.jpg" alt="Daddy Masih Kaya">
-          <div class="work-item__overlay">
-            <span class="work-item__role">Director - Music Video</span>
-            <h3 class="work-item__title">Daddy Masih Kaya (Kupi Kupi FM)</h3>
-          </div>
+          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
         </a>
 
       </div>
-      
     </div>
   </section>
 
-  <section class="links3" id="services" aria-label="Explore Rayrity Films">
-    <a class="links3__card" href="#work">
-      <img class="links3__img" src="assets/photos/nav-work.jpg" alt="">
-      <div class="links3__body">
-        <h3 class="links3__label">Work</h3>
-        <p class="links3__sub">Watch the full director's reel, campaigns, and filmography.</p>
-        <span class="links3__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </div>
-    </a>
-    <a class="links3__card" href="#team">
-      <img class="links3__img" src="assets/photos/nav-company.jpg" alt="">
-      <div class="links3__body">
-        <h3 class="links3__label">Company</h3>
-        <p class="links3__sub">Discover who we are and our approach to visual storytelling.</p>
-        <span class="links3__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </div>
-    </a>
-    <a class="links3__card" href="#contact">
-      <img class="links3__img" src="assets/photos/nav-contact.jpg" alt="">
-      <div class="links3__body">
-        <h3 class="links3__label">Contact</h3>
-        <p class="links3__sub">Pitch a script, or secure our team for your next major shoot.</p>
-        <span class="links3__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </div>
-    </a>
-  </section>
-
-  <section class="newsletter" id="journal">
-    <div class="wrap newsletter__inner reveal">
-      <div class="newsletter__copy">
-        <h2 class="newsletter__title">Stay close to the set.</h2>
-        <p class="newsletter__lede">Occasional field notes on new screenings, exclusive behind-the-scenes, and upcoming casting calls. No noise.</p>
-      </div>
-      <form class="newsletter__form" id="newsletterForm">
-        <label class="visually-hidden" for="newsletterEmail" style="position:absolute;left:-9999px;">Email address</label>
-        <input class="newsletter__input" id="newsletterEmail" type="email" required placeholder="Enter your email address...">
-        <button class="newsletter__btn" type="submit">
-          Subscribe
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-      </form>
+  <!-- Video Lightbox Modal Structure -->
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <button class="video-modal__close" id="modalClose" aria-label="Close video">&times;</button>
+    <div class="video-modal__content" id="modalIframeContainer">
+      <!-- Iframe injected by JS -->
     </div>
-    <div class="wrap reveal reveal-delay-1"><p class="newsletter__note" id="newsletterNote">Dispatched roughly once a month. Unsubscribe at any time.</p></div>
+  </div>
+
+  <!-- GIANT CONTACT CTA -->
+  <section class="big-cta reveal" id="contact">
+    <div class="wrap">
+      <h2 class="big-cta__title">Ready to <br><em>Roll?</em></h2>
+      <a href="https://wa.me/60165867492" target="_blank" rel="noopener" class="big-cta__btn">
+        Get in touch with us
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
   </section>
 
 </main>
 
-<footer class="footer" id="contact">
+<footer class="footer">
   <div class="wrap">
     <div class="footer__top">
       <div>
         <div class="footer__brand"><span class="footer__brand-mark" aria-hidden="true"></span>RAYRITY FILMS</div>
-        <p class="footer__tag">An independent Sabahan production company crafting cinematic experiences, driven by Clifford Ray.</p>
+        <p class="footer__tag">An independent Sabahan production company crafting cinematic experiences.</p>
       </div>
       <div class="footer__social">
-        <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
-        <a href="#" target="_blank" rel="noopener" aria-label="Vimeo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 6.54c0 4.14-3.3 9.77-9.7 9.77-3.4 0-5.64-1.92-5.64-4.88 0-1.8 1.14-3.8 2.3-5.8C10.1 3.52 10.3 2 9.2 2 8 2 6 3.4 4 5L3 4C5 2 7 0 9.5 0c2.7 0 3.7 2.1 3.7 4.7 0 2-1 4.5-2 6.7-.8 1.8-1 3-.5 3.5.6.6 2 .3 3.6-1.5 2-2.3 3.2-4.6 3.2-6 0-1.2-.5-1.8-1.5-1.8-1 0-2 .6-2 .6L14 3.5c1.4-1.2 3.3-1.5 5-1.5 2 0 3 1.3 3 4.54z"/></svg></a>
-        <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><path d="M12 16v-3a2 2 0 0 1 4 0v3"/></svg></a>
+        <a href="https://www.instagram.com/cliff_ray/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+        <a href="https://www.youtube.com/@cliffordray2853" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+        <a href="https://www.linkedin.com/in/raziealfiedan/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><path d="M12 16v-3a2 2 0 0 1 4 0v3"/></svg></a>
       </div>
     </div>
 
@@ -855,7 +853,6 @@
         <a href="#studio">About Us</a>
         <a href="#team">The Directors</a>
         <a href="#">Careers & Crew</a>
-        <a href="#contact">Contact</a>
       </div>
       <div class="footer__col">
         <div class="footer__col-title">Work</div>
@@ -864,15 +861,8 @@
         <a href="#work">Music Videos</a>
       </div>
       <div class="footer__col">
-        <div class="footer__col-title">News</div>
-        <a href="#journal">Screenings</a>
-        <a href="#journal">Press Room</a>
-        <a href="#journal">Awards</a>
-      </div>
-      <div class="footer__col">
         <div class="footer__col-title">Contact</div>
-        <a href="mailto:cliff8392@gmail.com">cliff8392@gmail.com</a>
-        <a href="tel:+601131723205">+6 011 3172 3205</a>
+        <a href="https://wa.me/60165867492" target="_blank" rel="noopener">+60 16-586 7492</a>
         <a href="#">Studio Location</a>
       </div>
     </div>
@@ -896,12 +886,6 @@
   "use strict";
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Preloader ---------- */
-  var preloader = document.getElementById('preloader');
-  function hidePreloader(){ preloader.classList.add('is-done'); }
-  window.addEventListener('load', function(){ setTimeout(hidePreloader, 600); });
-  setTimeout(hidePreloader, 3000); // safety fallback
-
   /* ---------- Custom cursor ---------- */
   var cursor = document.querySelector('.cursor');
   if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
@@ -909,7 +893,7 @@
     window.addEventListener('mousemove', function(e){
       cursor.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0) translate(-50%,-50%)';
     });
-    document.querySelectorAll('a, button, input').forEach(function(el){
+    document.querySelectorAll('a, button, input, .work-item').forEach(function(el){
       el.addEventListener('mouseenter', function(){ cursor.classList.add('cursor--hover'); });
       el.addEventListener('mouseleave', function(){ cursor.classList.remove('cursor--hover'); });
     });
@@ -935,32 +919,23 @@
       });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
     
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      revealObserver.observe(el);
-    });
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
   } else {
-    // Fallback for no JS or reduced motion
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      el.classList.add('is-visible');
-    });
+    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------- Mobile / full menu ---------- */
+  /* ---------- Mobile menu ---------- */
   var menuToggle = document.getElementById('menuToggle');
   var menuOverlay = document.getElementById('menuOverlay');
   function closeMenu(){
     menuOverlay.classList.remove('is-open');
     menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', 'Open menu');
   }
-  function toggleMenu(){
+  menuToggle.addEventListener('click', function(){
     var open = menuOverlay.classList.toggle('is-open');
-    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  }
-  menuToggle.addEventListener('click', toggleMenu);
+    this.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
   menuOverlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
 
   /* ---------- Hero rotator ---------- */
   var heroLines = document.querySelectorAll('.hero__line');
@@ -981,36 +956,29 @@
   var actPanels = document.querySelectorAll('.acts__panel');
   var blades = document.getElementById('ringBlades');
   var R = 84, CIRC = 2 * Math.PI * R;
-  ringProgress.style.strokeDasharray = CIRC + ' ' + CIRC;
-  ringProgress.style.strokeDashoffset = CIRC;
-  var words = ['Pre', 'Shoot', 'Post'];
+  if(ringProgress) {
+    ringProgress.style.strokeDasharray = CIRC + ' ' + CIRC;
+    ringProgress.style.strokeDashoffset = CIRC;
+    var words = ['Pre', 'Shoot', 'Post'];
 
-  function setActiveStep(step){
-    var frac = (step + 1) / words.length;
-    ringProgress.style.strokeDashoffset = CIRC - CIRC * frac;
-    
-    // Twists the focus ring bracket 90 degrees per step for a camera lens feel
-    blades.style.transform = 'rotate(' + (step * 90) + 'deg)';
-    
-    // Target the text inside the span to keep the REC dot intact
-    ringIndex.innerHTML = '<span class="rec-dot"></span> 0' + (step + 1) + ' / 0' + words.length;
-    ringWord.textContent = words[step];
-    
-    actSteps.forEach(function(li){
-      li.classList.toggle('is-active', Number(li.dataset.step) === step);
-    });
-    actPanels.forEach(function(p){
-      p.classList.toggle('is-active', Number(p.dataset.step) === step);
-    });
-  }
+    function setActiveStep(step){
+      var frac = (step + 1) / words.length;
+      ringProgress.style.strokeDashoffset = CIRC - CIRC * frac;
+      blades.style.transform = 'rotate(' + (step * 90) + 'deg)';
+      ringIndex.innerHTML = '<span class="rec-dot"></span> 0' + (step + 1) + ' / 0' + words.length;
+      ringWord.textContent = words[step];
+      actSteps.forEach(function(li){ li.classList.toggle('is-active', Number(li.dataset.step) === step); });
+      actPanels.forEach(function(p){ p.classList.toggle('is-active', Number(p.dataset.step) === step); });
+    }
 
-  if ('IntersectionObserver' in window && actPanels.length > 0) {
-    var actObserver = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting) setActiveStep(Number(entry.target.dataset.step));
-      });
-    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
-    actPanels.forEach(function(p){ actObserver.observe(p); });
+    if ('IntersectionObserver' in window && actPanels.length > 0) {
+      var actObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) setActiveStep(Number(entry.target.dataset.step));
+        });
+      }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+      actPanels.forEach(function(p){ actObserver.observe(p); });
+    }
   }
 
   /* ---------- Project Filtering Logic ---------- */
@@ -1019,48 +987,62 @@
 
   filterBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
-      // Remove active class from all buttons
       filterBtns.forEach(function(b) { b.classList.remove('is-active'); });
-      // Add active class to clicked button
       this.classList.add('is-active');
-
       var filterValue = this.getAttribute('data-filter');
 
       workItems.forEach(function(item) {
         var categories = item.getAttribute('data-category');
         if (filterValue === 'all' || categories.includes(filterValue)) {
           item.classList.remove('is-hidden');
-          // Brief timeout to allow display:block to apply before animating opacity if desired
           setTimeout(function() { item.style.opacity = '1'; }, 50);
         } else {
           item.style.opacity = '0';
-          // Wait for fade out before hiding from layout
           setTimeout(function() { item.classList.add('is-hidden'); }, 300);
         }
       });
     });
   });
 
-  /* ---------- NEWSLETTER SUBMIT ---------- */
-  var newsletterForm = document.getElementById('newsletterForm');
-  var newsletterNote = document.getElementById('newsletterNote');
-  if(newsletterForm){
-    newsletterForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      var email = document.getElementById('newsletterEmail').value;
-      if (!email) return;
-      newsletterNote.textContent = "You're confirmed. See you on set.";
-      newsletterNote.classList.add('is-success');
-      newsletterForm.reset();
-    });
+  /* ---------- Video Modal Logic ---------- */
+  var videoModal = document.getElementById('videoModal');
+  var modalClose = document.getElementById('modalClose');
+  var iframeContainer = document.getElementById('modalIframeContainer');
+
+  function openVideoModal(url) {
+    iframeContainer.innerHTML = '<iframe src="' + url + '?autoplay=1&rel=0&modestbranding=1" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+    videoModal.classList.add('is-active');
+    document.body.style.overflow = 'hidden'; 
   }
+
+  function closeVideoModal() {
+    videoModal.classList.remove('is-active');
+    document.body.style.overflow = '';
+    setTimeout(function() { iframeContainer.innerHTML = ''; }, 500); 
+  }
+
+  workItems.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      var url = this.getAttribute('href');
+      if (url.includes('youtube.com/embed')) {
+        e.preventDefault();
+        openVideoModal(url);
+      }
+    });
+  });
+
+  modalClose.addEventListener('click', closeVideoModal);
+  videoModal.addEventListener('click', function(e) {
+    if (e.target === videoModal) closeVideoModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && videoModal.classList.contains('is-active')) closeVideoModal();
+  });
 
   /* ---------- Back to top ---------- */
   document.getElementById('backToTop').addEventListener('click', function(){
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
-
-  /* ---------- Footer year ---------- */
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
 </script>
