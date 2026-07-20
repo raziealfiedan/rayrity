@@ -3,13 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rayrity Films — Cinematic Production Company</title>
-<meta name="description" content="Rayrity Films is a cinematic production company based in Sabah. We build narratives, frame by frame, for those who refuse the obvious.">
+<title>Rayrity Films — Cinematic Production Company in Sabah</title>
+<meta name="description" content="Rayrity Films is an independent cinematic production company based in Kota Kinabalu, Sabah. We build narratives, frame by frame, for those who refuse the obvious.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://rayrityfilms.com/">
 <meta name="theme-color" content="#050505">
+
+<!-- Open Graph / social preview. Swap rayrityfilms.com and the image path for your real domain + a real 1200x630 still. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rayrity Films">
+<meta property="og:title" content="Rayrity Films — Cinematic Production Company in Sabah">
+<meta property="og:description" content="An independent Sabahan production company crafting narratives, frames, and cinematic experiences for those who refuse the obvious.">
+<meta property="og:url" content="https://rayrityfilms.com/">
+<meta property="og:image" content="https://rayrityfilms.com/assets/photos/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rayrity Films — Cinematic Production Company in Sabah">
+<meta name="twitter:description" content="Narratives built frame by frame. An independent Sabahan production company.">
+<meta name="twitter:image" content="https://rayrityfilms.com/assets/photos/og-cover.jpg">
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23050505'/%3E%3Crect x='30' y='30' width='40' height='40' fill='%23e2231a'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23050505'/%3E%3Crect x='30' y='30' width='40' height='40' fill='%23e2231a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://img.youtube.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Rayrity Films",
+  "description": "Independent cinematic production company based in Kota Kinabalu, Sabah, producing narrative film, esports content, commercials and music videos.",
+  "url": "https://rayrityfilms.com/",
+  "telephone": "+60165867492",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kota Kinabalu",
+    "addressRegion": "Sabah",
+    "addressCountry": "MY"
+  },
+  "areaServed": "MY",
+  "sameAs": [
+    "https://www.instagram.com/cliff_ray/",
+    "https://www.youtube.com/@cliffordray2853",
+    "https://www.linkedin.com/in/raziealfiedan/"
+  ]
+}
+</script>
 
 <style>
   /* ---------- High-Contrast Noir Tokens ---------- */
@@ -29,10 +69,11 @@
     --ease: cubic-bezier(0.19, 1, 0.22, 1);
     --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
     --maxw: 1400px;
+    --nav-offset: 11rem;
   }
 
   * { box-sizing: border-box; }
-  html { font-size: 62.5%; scroll-behavior: smooth; background: var(--bg); }
+  html { font-size: 62.5%; scroll-behavior: smooth; background: var(--bg); scroll-padding-top: var(--nav-offset); }
   body {
     margin: 0; background: var(--bg); color: var(--fg);
     font-family: var(--font-body); font-size: 1.6rem; line-height: 1.65;
@@ -49,7 +90,10 @@
   :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 5vw; }
-  
+
+  /* section anchors sit clear of the fixed nav */
+  section[id] { scroll-margin-top: var(--nav-offset); }
+
   .eyebrow {
     display: inline-flex; align-items: center; gap: 1rem;
     font-size: 1.1rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
@@ -95,7 +139,7 @@
     padding: 2.8rem 5vw; transition: background 0.4s var(--ease), padding 0.4s var(--ease), border-color 0.4s var(--ease);
     border-bottom: 1px solid transparent;
   }
-  .nav.is-scrolled { background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(12px); padding: 1.8rem 5vw; border-color: var(--line); }
+  .nav.is-scrolled { background: rgba(5, 5, 5, 0.95); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); padding: 1.8rem 5vw; border-color: var(--line); }
   .nav__logo { display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-display); font-size: 2.6rem; letter-spacing: 0.05em; z-index: 901; }
   .nav__logo-mark { width: 1.2rem; height: 1.2rem; background: var(--red); display: inline-block; }
   .nav__links { display: flex; gap: 3.6rem; }
@@ -174,7 +218,7 @@
   #ringBlades { transform-origin: 100px 100px; transition: transform 0.8s var(--ease); }
   .acts__blade { stroke: var(--fg-dim); stroke-width: 1.5; fill: none; transition: stroke 0.4s var(--ease); }
   .acts__ring-label { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-  
+
   .acts__ring-index { font-size: 1.2rem; color: var(--red); font-weight: 700; letter-spacing: 0.15em; margin-bottom: 0.8rem; display: flex; align-items: center; }
   .rec-dot { display: inline-block; width: 6px; height: 6px; background: var(--red); border-radius: 50%; margin-right: 8px; animation: blink 1.5s infinite; }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
@@ -189,35 +233,34 @@
   .acts__panel.is-active { opacity: 1; }
 
   /* Photo Slider Marquee */
-  .acts__img-wrap { 
-    width: 100%; overflow: hidden; background: var(--bg-elev); margin-bottom: 3.6rem; 
+  .acts__img-wrap {
+    width: 100%; overflow: hidden; background: var(--bg-elev); margin-bottom: 3.6rem;
     position: relative; border: 1px solid var(--line-soft); display: flex;
   }
-  .acts__img-wrap::after { 
-    content: ''; position: absolute; inset: 0; background: var(--red); 
+  .acts__img-wrap::after {
+    content: ''; position: absolute; inset: 0; background: var(--red);
     opacity: 0; mix-blend-mode: color-burn; transition: opacity 0.6s var(--ease); pointer-events: none;
   }
   .acts__panel.is-active .acts__img-wrap::after { opacity: 0.15; }
-  
+
   .marquee__track {
     display: flex; width: max-content;
-    animation: scrollMarquee 25s linear infinite;
+    animation: scrollMarquee 40s linear infinite;
   }
-  /* Removed the pause animation on hover as requested */
-  
+
   .marquee__track img {
     height: clamp(250px, 40vw, 400px); width: auto; aspect-ratio: 16/9; object-fit: cover;
     margin-right: 1.2rem;
     filter: grayscale(1) contrast(1.2); /* Deep noir contrast by default */
     transition: filter 0.6s var(--ease);
   }
-  
+
   /* When hovering over the strip, all images in the track change to color */
   .acts__img-wrap:hover .marquee__track img { filter: grayscale(0) contrast(1.1); }
 
   @keyframes scrollMarquee {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } 
+    100% { transform: translateX(-50%); }
   }
 
   .acts__num { display: block; font-size: 1.2rem; color: var(--red); font-weight: 700; letter-spacing: 0.15em; margin-bottom: 1.6rem; }
@@ -237,16 +280,16 @@
   .team__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem; }
   .team__card { border: 1px solid var(--line-soft); padding: 4rem; transition: background 0.5s var(--ease), transform 0.5s var(--ease), border-color 0.5s var(--ease); display: flex; flex-direction: column; background: var(--bg-soft); }
   .team__card:hover { background: var(--bg-elev); transform: translateY(-0.8rem); border-color: var(--line); }
-  
+
   .team__img-wrap { aspect-ratio: 4/5; overflow: hidden; margin-bottom: 3rem; background: var(--bg-elev); position: relative; }
-  
-  .team__img { 
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; 
-    filter: grayscale(1) contrast(1.2); transition: filter 0.5s var(--ease), transform 1.2s var(--ease); 
+
+  .team__img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(1) contrast(1.2); transition: filter 0.5s var(--ease), transform 1.2s var(--ease);
   }
   /* Colorizes and scales on hover */
   .team__card:hover .team__img { filter: grayscale(0) contrast(1.1); transform: scale(1.05); }
-  
+
   .team__role { font-size: 1.1rem; color: var(--red); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.2rem; }
   .team__name { font-family: var(--font-display); font-size: clamp(3.4rem, 4.5vw, 5.2rem); margin-bottom: 1.6rem; text-transform: none; }
   .team__bio { color: var(--fg-dim); font-size: 1.6rem; font-weight: 300; line-height: 1.6; max-width: 95%; }
@@ -267,50 +310,52 @@
     display: flex; align-items: center; gap: 8rem;
   }
   .client-ticker__item::after { content: ''; width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
-  
+
   @keyframes scrollTicker {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } 
+    100% { transform: translateX(-50%); }
   }
 
   /* ---------- Filterable Work Grid ---------- */
   .work { padding-top: 14rem; }
   .work-filters { display: flex; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 4rem; }
   .filter-btn {
-    font-size: 1.2rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; 
-    color: var(--fg-dim); padding: 0.8rem 2rem; border: 1px solid var(--line-soft); 
+    font-size: 1.2rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--fg-dim); padding: 0.8rem 2rem; border: 1px solid var(--line-soft);
     border-radius: 3rem; transition: all 0.3s var(--ease);
   }
   .filter-btn:hover { border-color: var(--fg); color: var(--fg); }
   .filter-btn.is-active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 
   .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4rem; transition: opacity 0.4s var(--ease); }
-  
+
   .work-item {
     position: relative; aspect-ratio: 16/9; background: #000; overflow: hidden;
     display: block; border: 1px solid var(--line-soft); cursor: pointer;
   }
-  
+
   .work-item__img {
     width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease), filter 0.5s var(--ease);
     opacity: 0.6; filter: grayscale(0.8);
   }
   .work-item__overlay {
-    position: absolute; inset: 0; 
+    position: absolute; inset: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
     opacity: 1; transition: background 0.4s var(--ease);
     display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
   }
-  
-  .work-item:hover .work-item__img { transform: scale(1.05); filter: grayscale(0); opacity: 1; }
-  
+
+  .work-item:hover .work-item__img, .work-item:focus-visible .work-item__img { transform: scale(1.05); filter: grayscale(0); opacity: 1; }
+
   .work-item__role { font-size: 1.1rem; color: var(--red); font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.8rem; transform: translateY(1rem); transition: transform 0.4s var(--ease); }
   .work-item__title { font-family: var(--font-display); font-size: clamp(2.2rem, 2.5vw, 3rem); color: #fff; line-height: 1.1; transform: translateY(1rem); transition: transform 0.4s var(--ease) 0.05s; text-transform: none; }
-  
+
   .work-item:hover .work-item__role,
-  .work-item:hover .work-item__title { transform: translateY(0); }
+  .work-item:hover .work-item__title,
+  .work-item:focus-visible .work-item__role,
+  .work-item:focus-visible .work-item__title { transform: translateY(0); }
   .work-item.is-hidden { display: none; }
-  
+
   /* Play icon on hover */
   .work-item__play {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
@@ -318,7 +363,7 @@
     display: flex; align-items: center; justify-content: center; opacity: 0; transition: all 0.4s var(--ease);
   }
   .work-item__play svg { width: 2.4rem; height: 2.4rem; fill: #fff; margin-left: 0.4rem; }
-  .work-item:hover .work-item__play { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .work-item:hover .work-item__play, .work-item:focus-visible .work-item__play { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
   @media (max-width: 960px) {
     .work-grid { grid-template-columns: repeat(2, 1fr); }
@@ -330,18 +375,18 @@
   /* ---------- Video Modal ---------- */
   .video-modal {
     position: fixed; inset: 0; z-index: 9999;
-    background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(10px);
+    background: rgba(5, 5, 5, 0.98); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
     display: flex; align-items: center; justify-content: center;
     opacity: 0; visibility: hidden; transition: all 0.5s var(--ease);
   }
   .video-modal.is-active { opacity: 1; visibility: visible; }
-  
+
   .video-modal__close {
     position: absolute; top: 3rem; right: 4vw; color: #fff; font-size: 4rem; font-weight: 300;
     line-height: 1; transition: color 0.3s var(--ease), transform 0.4s var(--ease);
   }
   .video-modal__close:hover { color: var(--red); transform: rotate(90deg); }
-  
+
   .video-modal__content {
     width: 90%; max-width: 1200px; aspect-ratio: 16/9; background: #000;
     transform: translateY(4rem); transition: transform 0.6s var(--ease-out); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
@@ -390,11 +435,12 @@
 
   @media (max-width: 880px) { .footer__cols { grid-template-columns: repeat(2, 1fr); row-gap: 5rem; } }
   @media (max-width: 560px) {
+    :root { --nav-offset: 8rem; }
     .wrap { padding: 0 6vw; } .nav { padding: 2rem 6vw; } .section { padding: 9rem 0; } .footer { padding: 8rem 0 3rem; } .footer__cols { grid-template-columns: 1fr 1fr; gap: 2rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; } .hero__bg { animation: none; } .hero__chevron { animation: none; }
+    html { scroll-behavior: auto; } .hero__bg { animation: none; } .hero__chevron { animation: none; } .rec-dot { animation: none; }
     * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   }
 </style>
@@ -420,7 +466,7 @@
   </button>
 </header>
 
-<div class="menu" id="menuOverlay">
+<div class="menu" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden="true">
   <ul class="menu__list">
     <li class="menu__item"><span class="menu__num">I</span><a class="menu__link" href="#studio">Studio</a></li>
     <li class="menu__item"><span class="menu__num">II</span><a class="menu__link" href="#team">Team</a></li>
@@ -429,13 +475,12 @@
   </ul>
   <div class="menu__foot">
     <div class="menu__social">
-      <a href="https://www.instagram.com/cliff_ray/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.youtube.com/@cliffordray2853" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://www.linkedin.com/in/raziealfiedan/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/cliff_ray/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/@cliffordray2853" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://www.linkedin.com/in/raziealfiedan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
     <div class="menu__contact">
-      <!-- Removed email link directly to enforce whatsapp CTA, can add back if needed -->
-      <a href="https://wa.me/60165867492" target="_blank" rel="noopener">+60 16-586 7492</a>
+      <a href="https://wa.me/60165867492" target="_blank" rel="noopener noreferrer">+60 16-586 7492</a>
     </div>
   </div>
 </div>
@@ -444,7 +489,7 @@
 
   <section class="hero" id="top">
     <div class="hero__bg-wrap">
-      <img class="hero__bg" src="assets/photos/hero-bg.jpg" alt="" role="presentation">
+      <img class="hero__bg" src="assets/photos/hero-bg.jpg" alt="" role="presentation" fetchpriority="high" decoding="async">
       <div class="hero__overlay"></div>
     </div>
     <div class="hero__content">
@@ -489,7 +534,7 @@
               </g>
             </svg>
             <div class="acts__ring-label">
-              <span class="acts__ring-index" id="ringIndex"><span class="rec-dot"></span> 01 / 03</span>
+              <span class="acts__ring-index" id="ringIndex"><span class="rec-dot" aria-hidden="true"></span> 01 / 03</span>
               <span class="acts__ring-word" id="ringWord">Pre</span>
             </div>
           </div>
@@ -504,13 +549,20 @@
           <article class="acts__panel is-active" data-step="0">
             <div class="acts__img-wrap">
               <div class="marquee__track">
-                <img src="assets/photos/pre-1.jpg" alt="Pre-production 1">
-                <img src="assets/photos/pre-2.jpg" alt="Pre-production 2">
-                <img src="assets/photos/pre-3.jpg" alt="Pre-production 3">
-                <img src="assets/photos/pre-4.jpg" alt="Pre-production 4">
-                <img src="assets/photos/pre-5.jpg" alt="Pre-production 5">
-                <img src="assets/photos/pre-6.jpg" alt="Pre-production 6">
-                <img src="assets/photos/pre-7.jpg" alt="Pre-production 7">
+                <img src="assets/photos/pre-1.jpg" alt="Pre-production 1" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-2.jpg" alt="Pre-production 2" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-3.jpg" alt="Pre-production 3" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-4.jpg" alt="Pre-production 4" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-5.jpg" alt="Pre-production 5" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-6.jpg" alt="Pre-production 6" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-7.jpg" alt="Pre-production 7" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-1.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-2.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-3.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-4.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-5.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-6.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/pre-7.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
               </div>
             </div>
             <span class="acts__num">01</span>
@@ -520,13 +572,20 @@
           <article class="acts__panel" data-step="1">
             <div class="acts__img-wrap">
               <div class="marquee__track">
-                <img src="assets/photos/shoot-1.jpg" alt="Shoot 1">
-                <img src="assets/photos/shoot-2.jpg" alt="Shoot 2">
-                <img src="assets/photos/shoot-3.jpg" alt="Shoot 3">
-                <img src="assets/photos/shoot-4.jpg" alt="Shoot 4">
-                <img src="assets/photos/shoot-5.jpg" alt="Shoot 5">
-                <img src="assets/photos/shoot-6.jpg" alt="Shoot 6">
-                <img src="assets/photos/shoot-7.jpg" alt="Shoot 7">
+                <img src="assets/photos/shoot-1.jpg" alt="Shoot 1" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-2.jpg" alt="Shoot 2" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-3.jpg" alt="Shoot 3" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-4.jpg" alt="Shoot 4" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-5.jpg" alt="Shoot 5" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-6.jpg" alt="Shoot 6" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-7.jpg" alt="Shoot 7" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-1.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-2.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-3.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-4.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-5.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-6.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/shoot-7.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
               </div>
             </div>
             <span class="acts__num">02</span>
@@ -536,13 +595,20 @@
           <article class="acts__panel" data-step="2">
             <div class="acts__img-wrap">
               <div class="marquee__track">
-                <img src="assets/photos/post-1.jpg" alt="Post 1">
-                <img src="assets/photos/post-2.jpg" alt="Post 2">
-                <img src="assets/photos/post-3.jpg" alt="Post 3">
-                <img src="assets/photos/post-4.jpg" alt="Post 4">
-                <img src="assets/photos/post-5.jpg" alt="Post 5">
-                <img src="assets/photos/post-6.jpg" alt="Post 6">
-                <img src="assets/photos/post-7.jpg" alt="Post 7">
+                <img src="assets/photos/post-1.jpg" alt="Post 1" loading="lazy" decoding="async">
+                <img src="assets/photos/post-2.jpg" alt="Post 2" loading="lazy" decoding="async">
+                <img src="assets/photos/post-3.jpg" alt="Post 3" loading="lazy" decoding="async">
+                <img src="assets/photos/post-4.jpg" alt="Post 4" loading="lazy" decoding="async">
+                <img src="assets/photos/post-5.jpg" alt="Post 5" loading="lazy" decoding="async">
+                <img src="assets/photos/post-6.jpg" alt="Post 6" loading="lazy" decoding="async">
+                <img src="assets/photos/post-7.jpg" alt="Post 7" loading="lazy" decoding="async">
+                <img src="assets/photos/post-1.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/post-2.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/post-3.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/post-4.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/post-5.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/post-6.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="assets/photos/post-7.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
               </div>
             </div>
             <span class="acts__num">03</span>
@@ -568,7 +634,7 @@
         <!-- Clifford's Card -->
         <div class="team__card reveal reveal-delay-1">
           <div class="team__img-wrap">
-            <img class="team__img" src="assets/photos/team-clifford-alt.jpg" alt="Clifford on set">
+            <img class="team__img" src="assets/photos/team-clifford-alt.jpg" alt="Clifford on set" loading="lazy" decoding="async">
           </div>
           <span class="team__role">Founder & Director</span>
           <h3 class="team__name">Clifford Ray</h3>
@@ -578,7 +644,7 @@
         <!-- Razie's Card -->
         <div class="team__card reveal reveal-delay-2">
           <div class="team__img-wrap">
-            <img class="team__img" src="assets/photos/team-razie-alt.jpg" alt="Razie behind the scenes">
+            <img class="team__img" src="assets/photos/team-razie-alt.jpg" alt="Razie behind the scenes" loading="lazy" decoding="async">
           </div>
           <span class="team__role">Visual Artist</span>
           <h3 class="team__name">Razie Alfiedan</h3>
@@ -618,194 +684,193 @@
         <p class="section__lede">A curated archive of our visual standards and narrative drive. Explore our award-winning independent films, international esports campaigns, and corporate documentaries.</p>
       </div>
 
-      <div class="work-filters reveal reveal-delay-1" id="workFilters">
-        <button class="filter-btn is-active" data-filter="all">All Work</button>
-        <button class="filter-btn" data-filter="narrative">Narrative & Doc</button>
-        <button class="filter-btn" data-filter="esports">Esports</button>
-        <button class="filter-btn" data-filter="commercial">Commercial</button>
-        <button class="filter-btn" data-filter="music">Music & Social</button>
+      <div class="work-filters reveal reveal-delay-1" id="workFilters" role="group" aria-label="Filter work by category">
+        <button class="filter-btn is-active" data-filter="all" aria-pressed="true">All Work</button>
+        <button class="filter-btn" data-filter="narrative" aria-pressed="false">Narrative & Doc</button>
+        <button class="filter-btn" data-filter="esports" aria-pressed="false">Esports</button>
+        <button class="filter-btn" data-filter="commercial" aria-pressed="false">Commercial</button>
+        <button class="filter-btn" data-filter="music" aria-pressed="false">Music & Social</button>
       </div>
 
       <div class="work-grid reveal reveal-delay-2" id="workGrid">
-        
+
         <!-- NARRATIVE & DOC -->
-        <a href="https://www.youtube.com/embed/kUs5PkVu1gY" class="work-item" data-category="narrative" aria-label="Watch KKIFF Narrative">
-          <img class="work-item__img" src="https://img.youtube.com/vi/kUs5PkVu1gY/maxresdefault.jpg" alt="KKIFF Narrative">
+        <a href="https://www.youtube.com/embed/kUs5PkVu1gY" class="work-item" data-category="narrative" aria-label="Watch Int. Room - Night, KKIFF Narrative Team 1">
+          <img class="work-item__img" src="https://img.youtube.com/vi/kUs5PkVu1gY/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">KKIFF Narrative Team 1</span>
             <h3 class="work-item__title">Int. Room - Night</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="https://www.youtube.com/embed/e0PrebKEeew" class="work-item" data-category="narrative" aria-label="Watch Finding Huminodun">
-          <img class="work-item__img" src="https://img.youtube.com/vi/e0PrebKEeew/maxresdefault.jpg" alt="Finding Huminodun">
+        <a href="https://www.youtube.com/embed/e0PrebKEeew" class="work-item" data-category="narrative" aria-label="Watch Finding Huminodun, Imago Video Contest">
+          <img class="work-item__img" src="https://img.youtube.com/vi/e0PrebKEeew/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Imago Video Contest</span>
             <h3 class="work-item__title">Finding Huminodun</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
         <a href="https://www.youtube.com/embed/gjH6wnZIplE" class="work-item" data-category="narrative" aria-label="Watch Toimo">
-          <img class="work-item__img" src="https://img.youtube.com/vi/gjH6wnZIplE/maxresdefault.jpg" alt="Toimo">
+          <img class="work-item__img" src="https://img.youtube.com/vi/gjH6wnZIplE/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Narrative</span>
             <h3 class="work-item__title">Toimo</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
         <a href="https://www.youtube.com/embed/p0XWTO16B4E" class="work-item" data-category="narrative" aria-label="Watch Kulintangan Si Bapa">
-          <img class="work-item__img" src="https://img.youtube.com/vi/p0XWTO16B4E/maxresdefault.jpg" alt="Kulintangan Si Bapa">
+          <img class="work-item__img" src="https://img.youtube.com/vi/p0XWTO16B4E/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Narrative</span>
             <h3 class="work-item__title">Kulintangan Si Bapa</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="https://www.youtube.com/embed/IsnhTwSz5Vc" class="work-item" data-category="narrative" aria-label="Watch Di Sini Aku">
-          <img class="work-item__img" src="https://img.youtube.com/vi/IsnhTwSz5Vc/maxresdefault.jpg" alt="Di Sini Aku">
+        <a href="https://www.youtube.com/embed/IsnhTwSz5Vc" class="work-item" data-category="narrative" aria-label="Watch Di Sini Aku, BMW Shorties Finalist">
+          <img class="work-item__img" src="https://img.youtube.com/vi/IsnhTwSz5Vc/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">BMW Shorties Finalist</span>
             <h3 class="work-item__title">Di Sini Aku</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="https://www.youtube.com/embed/irMXkq0hlr4" class="work-item" data-category="narrative" aria-label="Watch Ride Your Story">
-          <img class="work-item__img" src="https://img.youtube.com/vi/irMXkq0hlr4/maxresdefault.jpg" alt="Ride Your Story">
+        <a href="https://www.youtube.com/embed/irMXkq0hlr4" class="work-item" data-category="narrative" aria-label="Watch Ride Your Story, TVS Entertainment">
+          <img class="work-item__img" src="https://img.youtube.com/vi/irMXkq0hlr4/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">TVS Entertainment</span>
             <h3 class="work-item__title">Ride Your Story</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
 
         <!-- ESPORTS -->
-        <a href="https://www.youtube.com/embed/2S-iJgrxAUg" class="work-item" data-category="esports" aria-label="Watch Nigma x BMW">
-          <img class="work-item__img" src="https://img.youtube.com/vi/2S-iJgrxAUg/maxresdefault.jpg" alt="Nigma x BMW">
+        <a href="https://www.youtube.com/embed/2S-iJgrxAUg" class="work-item" data-category="esports" aria-label="Watch Nigma x BMW, Esports Commercial">
+          <img class="work-item__img" src="https://img.youtube.com/vi/2S-iJgrxAUg/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Esports Commercial</span>
             <h3 class="work-item__title">Nigma x BMW</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="https://www.youtube.com/embed/BE81Gq_gSTU" class="work-item" data-category="esports" aria-label="Watch Miracle Returns">
-          <img class="work-item__img" src="https://img.youtube.com/vi/BE81Gq_gSTU/maxresdefault.jpg" alt="Miracle Returns">
+        <a href="https://www.youtube.com/embed/BE81Gq_gSTU" class="work-item" data-category="esports" aria-label="Watch Miracle Returns, Dota 2 Documentary">
+          <img class="work-item__img" src="https://img.youtube.com/vi/BE81Gq_gSTU/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Dota 2 Documentary</span>
             <h3 class="work-item__title">Miracle Returns</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="https://www.youtube.com/embed/k8VJyls-M6g" class="work-item" data-category="esports" aria-label="Watch Jiggy Biggy Dallas">
-          <img class="work-item__img" src="https://img.youtube.com/vi/k8VJyls-M6g/maxresdefault.jpg" alt="Jiggy Biggy Dallas">
+        <a href="https://www.youtube.com/embed/k8VJyls-M6g" class="work-item" data-category="esports" aria-label="Watch Jiggy Biggy Best, Dallas">
+          <img class="work-item__img" src="https://img.youtube.com/vi/k8VJyls-M6g/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Esports Doc (Dallas)</span>
             <h3 class="work-item__title">Jiggy Biggy Best</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="https://www.youtube.com/embed/4bRFOlru1Fw" class="work-item" data-category="esports" aria-label="Watch Jiggy Biggy Valencia">
-          <img class="work-item__img" src="https://img.youtube.com/vi/4bRFOlru1Fw/maxresdefault.jpg" alt="Jiggy Biggy Valencia">
+        <a href="https://www.youtube.com/embed/4bRFOlru1Fw" class="work-item" data-category="esports" aria-label="Watch Jiggy Biggy Best, Valencia">
+          <img class="work-item__img" src="https://img.youtube.com/vi/4bRFOlru1Fw/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Esports Doc (Valencia)</span>
             <h3 class="work-item__title">Jiggy Biggy Best</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="https://www.youtube.com/embed/lSWDn2zTiLY" class="work-item" data-category="esports" aria-label="Watch Jiggy Biggy Jönköping">
-          <img class="work-item__img" src="https://img.youtube.com/vi/lSWDn2zTiLY/maxresdefault.jpg" alt="Jiggy Biggy Jönköping">
+        <a href="https://www.youtube.com/embed/lSWDn2zTiLY" class="work-item" data-category="esports" aria-label="Watch Jiggy Biggy Jönköping, a CS:GO story">
+          <img class="work-item__img" src="https://img.youtube.com/vi/lSWDn2zTiLY/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">A CS:GO Story</span>
             <h3 class="work-item__title">Jiggy Biggy Jönköping</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="https://www.youtube.com/embed/MwFEZHrZFeU" class="work-item" data-category="esports" aria-label="Watch Nigma Galaxy Wild Rift">
-          <img class="work-item__img" src="https://img.youtube.com/vi/MwFEZHrZFeU/maxresdefault.jpg" alt="Nigma Galaxy Wild Rift">
+        <a href="https://www.youtube.com/embed/MwFEZHrZFeU" class="work-item" data-category="esports" aria-label="Watch Nigma Galaxy Wild Rift Documentary">
+          <img class="work-item__img" src="https://img.youtube.com/vi/MwFEZHrZFeU/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Esports Documentary</span>
             <h3 class="work-item__title">Nigma Galaxy Wild Rift</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        
+
         <!-- Facebook Reels (Opens in new tab) -->
-        <a href="https://www.facebook.com/reel/494262748741084" target="_blank" class="work-item" data-category="esports" aria-label="Watch EVOS Mika">
-          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="EVOS Mika Reveal">
+        <a href="https://www.facebook.com/reel/494262748741084" target="_blank" rel="noopener noreferrer" class="work-item" data-category="esports" aria-label="Watch EVOS Roster Reveal - Mika (opens on Facebook)">
+          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Social Promo</span>
             <h3 class="work-item__title">EVOS Roster Reveal - Mika</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
         </a>
-        <a href="https://www.facebook.com/reel/493313281686197" target="_blank" class="work-item" data-category="esports" aria-label="Watch EVOS S5">
-          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="EVOS Season 5">
+        <a href="https://www.facebook.com/reel/493313281686197" target="_blank" rel="noopener noreferrer" class="work-item" data-category="esports" aria-label="Watch EVOS Season 5 Reveal (opens on Facebook)">
+          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Social Promo</span>
             <h3 class="work-item__title">EVOS Season 5 Reveal</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
         </a>
 
         <!-- COMMERCIAL & MUSIC -->
-        <a href="https://www.youtube.com/embed/8MJJ4ekVyac" class="work-item" data-category="commercial" aria-label="Watch KKIP">
-          <img class="work-item__img" src="https://img.youtube.com/vi/8MJJ4ekVyac/maxresdefault.jpg" alt="KKIP">
+        <a href="https://www.youtube.com/embed/8MJJ4ekVyac" class="work-item" data-category="commercial" aria-label="Watch KKIP 2024, Corporate Video">
+          <img class="work-item__img" src="https://img.youtube.com/vi/8MJJ4ekVyac/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Corporate Video</span>
             <h3 class="work-item__title">KKIP 2024</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="https://www.youtube.com/embed/uEEn_y4CJ28" class="work-item" data-category="music" aria-label="Watch Daddy Masih Kaya">
-          <img class="work-item__img" src="https://img.youtube.com/vi/uEEn_y4CJ28/maxresdefault.jpg" alt="Daddy Masih Kaya">
+        <a href="https://www.youtube.com/embed/uEEn_y4CJ28" class="work-item" data-category="music" aria-label="Watch Daddy Masih Kaya, Music Video">
+          <img class="work-item__img" src="https://img.youtube.com/vi/uEEn_y4CJ28/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Music Video</span>
             <h3 class="work-item__title">Daddy Masih Kaya</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="https://www.youtube.com/embed/LE8iHmGSfeE" class="work-item" data-category="music" aria-label="Watch Lintah Darat">
-          <img class="work-item__img" src="https://img.youtube.com/vi/LE8iHmGSfeE/maxresdefault.jpg" alt="Lintah Darat">
+        <a href="https://www.youtube.com/embed/LE8iHmGSfeE" class="work-item" data-category="music" aria-label="Watch Lintah Darat - Marsha, Music Video">
+          <img class="work-item__img" src="https://img.youtube.com/vi/LE8iHmGSfeE/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Music Video</span>
             <h3 class="work-item__title">Lintah Darat - Marsha</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        <a href="https://www.youtube.com/embed/dG2kiEYVEmU" class="work-item" data-category="music" aria-label="Watch KAMI KB">
-          <img class="work-item__img" src="https://img.youtube.com/vi/dG2kiEYVEmU/maxresdefault.jpg" alt="KAMI KB">
+        <a href="https://www.youtube.com/embed/dG2kiEYVEmU" class="work-item" data-category="music" aria-label="Watch KAMI KB - Dabra Sia, Official Music Video">
+          <img class="work-item__img" src="https://img.youtube.com/vi/dG2kiEYVEmU/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Official Music Video</span>
             <h3 class="work-item__title">KAMI KB - Dabra Sia</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
 
-        <!-- BRAND NEW: HEY KAMPUNG -->
-        <a href="https://www.youtube.com/embed/89hLNFWY36I" class="work-item" data-category="music" aria-label="Watch Hey Kampung">
-          <img class="work-item__img" src="https://img.youtube.com/vi/89hLNFWY36I/maxresdefault.jpg" alt="Hey Kampung Music Video">
+        <a href="https://www.youtube.com/embed/89hLNFWY36I" class="work-item" data-category="music" aria-label="Watch Hey Kampung - Queennera Francine, Official Music Video">
+          <img class="work-item__img" src="https://img.youtube.com/vi/89hLNFWY36I/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Official Music Video</span>
             <h3 class="work-item__title">Hey Kampung - Queennera Francine</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
-        
+
         <!-- Commercial FB links -->
-        <a href="https://www.facebook.com/reel/1043346399910938" target="_blank" class="work-item" data-category="commercial" aria-label="Watch V21 Residence">
-          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="V21 Residence">
+        <a href="https://www.facebook.com/reel/1043346399910938" target="_blank" rel="noopener noreferrer" class="work-item" data-category="commercial" aria-label="Watch V21 Residence promo (opens on Facebook)">
+          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Promo Video</span>
             <h3 class="work-item__title">V21 Residence</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
         </a>
-        <a href="https://www.facebook.com/reel/759378780006704" target="_blank" class="work-item" data-category="commercial" aria-label="Watch Gleneagles">
-          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="Gleneagles Kota Kinabalu">
+        <a href="https://www.facebook.com/reel/759378780006704" target="_blank" rel="noopener noreferrer" class="work-item" data-category="commercial" aria-label="Watch Gleneagles - Dr Talal promo (opens on Facebook)">
+          <img class="work-item__img" src="assets/photos/fb-placeholder.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Medical Promo</span>
             <h3 class="work-item__title">Gleneagles - Dr Talal</h3>
           </div>
-          <div class="work-item__play"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
+          <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
         </a>
 
       </div>
@@ -813,7 +878,7 @@
   </section>
 
   <!-- Video Lightbox Modal Structure -->
-  <div class="video-modal" id="videoModal" aria-hidden="true">
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player" aria-hidden="true">
     <button class="video-modal__close" id="modalClose" aria-label="Close video">&times;</button>
     <div class="video-modal__content" id="modalIframeContainer">
       <!-- Iframe injected by JS -->
@@ -824,7 +889,7 @@
   <section class="big-cta reveal" id="contact">
     <div class="wrap">
       <h2 class="big-cta__title">Ready to <br><em>Roll?</em></h2>
-      <a href="https://wa.me/60165867492" target="_blank" rel="noopener" class="big-cta__btn">
+      <a href="https://wa.me/60165867492" target="_blank" rel="noopener noreferrer" class="big-cta__btn">
         Get in touch with us
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -841,9 +906,9 @@
         <p class="footer__tag">An independent Sabahan production company crafting cinematic experiences.</p>
       </div>
       <div class="footer__social">
-        <a href="https://www.instagram.com/cliff_ray/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
-        <a href="https://www.youtube.com/@cliffordray2853" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
-        <a href="https://www.linkedin.com/in/raziealfiedan/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><path d="M12 16v-3a2 2 0 0 1 4 0v3"/></svg></a>
+        <a href="https://www.instagram.com/cliff_ray/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+        <a href="https://www.youtube.com/@cliffordray2853" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+        <a href="https://www.linkedin.com/in/raziealfiedan/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><path d="M12 16v-3a2 2 0 0 1 4 0v3"/></svg></a>
       </div>
     </div>
 
@@ -862,7 +927,7 @@
       </div>
       <div class="footer__col">
         <div class="footer__col-title">Contact</div>
-        <a href="https://wa.me/60165867492" target="_blank" rel="noopener">+60 16-586 7492</a>
+        <a href="https://wa.me/60165867492" target="_blank" rel="noopener noreferrer">+60 16-586 7492</a>
         <a href="#">Studio Location</a>
       </div>
     </div>
@@ -918,7 +983,7 @@
         }
       });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
-    
+
     document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
@@ -929,13 +994,25 @@
   var menuOverlay = document.getElementById('menuOverlay');
   function closeMenu(){
     menuOverlay.classList.remove('is-open');
+    menuOverlay.setAttribute('aria-hidden', 'true');
     menuToggle.setAttribute('aria-expanded', 'false');
   }
+  function openMenu(){
+    menuOverlay.classList.add('is-open');
+    menuOverlay.setAttribute('aria-hidden', 'false');
+    menuToggle.setAttribute('aria-expanded', 'true');
+  }
   menuToggle.addEventListener('click', function(){
-    var open = menuOverlay.classList.toggle('is-open');
-    this.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var isOpen = menuOverlay.classList.contains('is-open');
+    if (isOpen) { closeMenu(); } else { openMenu(); }
   });
   menuOverlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && menuOverlay.classList.contains('is-open')) {
+      closeMenu();
+      menuToggle.focus();
+    }
+  });
 
   /* ---------- Hero rotator ---------- */
   var heroLines = document.querySelectorAll('.hero__line');
@@ -965,7 +1042,7 @@
       var frac = (step + 1) / words.length;
       ringProgress.style.strokeDashoffset = CIRC - CIRC * frac;
       blades.style.transform = 'rotate(' + (step * 90) + 'deg)';
-      ringIndex.innerHTML = '<span class="rec-dot"></span> 0' + (step + 1) + ' / 0' + words.length;
+      ringIndex.innerHTML = '<span class="rec-dot" aria-hidden="true"></span> 0' + (step + 1) + ' / 0' + words.length;
       ringWord.textContent = words[step];
       actSteps.forEach(function(li){ li.classList.toggle('is-active', Number(li.dataset.step) === step); });
       actPanels.forEach(function(p){ p.classList.toggle('is-active', Number(p.dataset.step) === step); });
@@ -987,8 +1064,9 @@
 
   filterBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
-      filterBtns.forEach(function(b) { b.classList.remove('is-active'); });
+      filterBtns.forEach(function(b) { b.classList.remove('is-active'); b.setAttribute('aria-pressed', 'false'); });
       this.classList.add('is-active');
+      this.setAttribute('aria-pressed', 'true');
       var filterValue = this.getAttribute('data-filter');
 
       workItems.forEach(function(item) {
@@ -1008,17 +1086,23 @@
   var videoModal = document.getElementById('videoModal');
   var modalClose = document.getElementById('modalClose');
   var iframeContainer = document.getElementById('modalIframeContainer');
+  var lastFocusedEl = null;
 
-  function openVideoModal(url) {
-    iframeContainer.innerHTML = '<iframe src="' + url + '?autoplay=1&rel=0&modestbranding=1" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+  function openVideoModal(url, triggerEl) {
+    lastFocusedEl = triggerEl || document.activeElement;
+    iframeContainer.innerHTML = '<iframe src="' + url + '?autoplay=1&rel=0&modestbranding=1" title="Video player" allow="autoplay; fullscreen" allowfullscreen></iframe>';
     videoModal.classList.add('is-active');
-    document.body.style.overflow = 'hidden'; 
+    videoModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    modalClose.focus();
   }
 
   function closeVideoModal() {
     videoModal.classList.remove('is-active');
+    videoModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    setTimeout(function() { iframeContainer.innerHTML = ''; }, 500); 
+    setTimeout(function() { iframeContainer.innerHTML = ''; }, 500);
+    if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') { lastFocusedEl.focus(); }
   }
 
   workItems.forEach(function(item) {
@@ -1026,7 +1110,7 @@
       var url = this.getAttribute('href');
       if (url.includes('youtube.com/embed')) {
         e.preventDefault();
-        openVideoModal(url);
+        openVideoModal(url, item);
       }
     });
   });
