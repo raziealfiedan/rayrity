@@ -38,7 +38,7 @@
   "telephone": "+60165867492",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Kota Kinabalu",
+    "addressLocality": "Penampang",
     "addressRegion": "Sabah",
     "addressCountry": "MY"
   },
@@ -59,7 +59,7 @@
     --bg-elev: #1a1a1a;
     --fg: #f5f5f5;
     --fg-dim: #a3a3a3;
-    --fg-faint: #555555;
+    --fg-faint: #6e6e6e;
     --red: #e2231a;
     --red-dim: #b81b14;
     --line: rgba(255, 255, 255, 0.15);
@@ -81,7 +81,7 @@
     overflow-x: hidden;
   }
   img { max-width: 100%; display: block; height: auto; }
-  a { color: inherit; text-decoration: none; transition: color 0.3s var(--ease); }
+  a { color: inherit; text-decoration: none; transition: color 0.3s var(--ease), transform 0.3s var(--ease); }
   ul, ol { margin: 0; padding: 0; list-style: none; }
   h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 400; letter-spacing: 0.02em; line-height: 1.05; text-transform: uppercase; }
   p { margin: 0; }
@@ -334,7 +334,6 @@
     .service-row:hover { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
 
-
   /* ---------- Team Section ---------- */
   .team__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem; }
   .team__card { border: 1px solid var(--line-soft); padding: 4rem; transition: background 0.5s var(--ease), transform 0.5s var(--ease), border-color 0.5s var(--ease); display: flex; flex-direction: column; background: var(--bg-soft); }
@@ -391,6 +390,7 @@
   .work-item {
     position: relative; aspect-ratio: 16/9; background: #000; overflow: hidden;
     display: block; border: 1px solid var(--line-soft); cursor: pointer;
+    transition: opacity 0.3s var(--ease);
   }
 
   .work-item__img {
@@ -486,34 +486,69 @@
   }
   .big-cta__btn:hover { background: var(--red-dim); transform: translateY(-0.4rem); box-shadow: 0 15px 35px rgba(226, 35, 26, 0.3); }
 
-  /* ---------- Footer ---------- */
-  .footer { border-top: 1px solid var(--line-soft); padding: 10rem 0 4rem; background: #000; position: relative; z-index: 4; }
-  .footer__top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8rem; flex-wrap: wrap; gap: 4rem; }
-  .footer__brand { display: flex; align-items: center; gap: 1rem; font-family: var(--font-display); font-size: 3.8rem; letter-spacing: 0.02em; }
+  /* ---------- REDESIGNED PREMIUM FOOTER ---------- */
+  .footer { 
+    position: relative; border-top: 1px solid var(--line-soft); 
+    padding: 12rem 0 4rem; background: #000; overflow: hidden; z-index: 4; 
+  }
+  /* Giant cinematic watermark */
+  .footer__watermark {
+    position: absolute; top: -3rem; left: 50%; transform: translateX(-50%);
+    font-family: var(--font-display); font-size: clamp(12rem, 24vw, 38rem); line-height: 0.8;
+    color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.03);
+    white-space: nowrap; pointer-events: none; z-index: 1; user-select: none;
+  }
+  .footer .wrap { position: relative; z-index: 2; }
+  
+  .footer__top { display: grid; grid-template-columns: 1fr 1.5fr; gap: 8rem; margin-bottom: 8rem; }
+  
+  .footer__brand-col { max-width: 42rem; }
+  .footer__brand { display: flex; align-items: center; gap: 1rem; font-family: var(--font-display); font-size: 3.8rem; letter-spacing: 0.02em; margin-bottom: 2.4rem; }
   .footer__brand-mark { width: 1.4rem; height: 1.4rem; background: var(--red); }
-  .footer__tag { color: var(--fg-dim); max-width: 36rem; margin-top: 2rem; font-size: 1.6rem; font-weight: 300; line-height: 1.6; }
+  .footer__tag { color: var(--fg-dim); font-size: 1.6rem; font-weight: 300; line-height: 1.6; margin-bottom: 4rem; }
+  
   .footer__social { display: flex; gap: 1.6rem; }
-  .footer__social a { width: 4.8rem; height: 4.8rem; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: border-color 0.4s var(--ease), background 0.4s var(--ease), transform 0.4s var(--ease); }
-  .footer__social a:hover { border-color: var(--red); background: var(--red); transform: translateY(-0.3rem); }
+  .footer__social a { 
+    width: 4.8rem; height: 4.8rem; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; 
+    border-radius: 50%; transition: border-color 0.4s var(--ease), background 0.4s var(--ease), transform 0.4s var(--ease); 
+  }
+  .footer__social a:hover { border-color: var(--red); background: var(--red); transform: translateY(-0.4rem); }
   .footer__social svg { width: 1.8rem; height: 1.8rem; stroke: var(--fg); transition: stroke 0.4s var(--ease); }
   .footer__social a:hover svg { stroke: #fff; }
 
-  .footer__cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4rem; padding-bottom: 6rem; border-bottom: 1px solid var(--line-soft); }
+  .footer__data-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem; }
   .footer__col-title { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-faint); margin-bottom: 2.4rem; }
-  .footer__col a { display: block; padding: 0.6rem 0; color: var(--fg-dim); font-size: 1.5rem; font-weight: 400; transition: color 0.3s var(--ease); }
-  .footer__col a:hover { color: var(--red); }
+  
+  .footer__text { color: var(--fg-dim); font-size: 1.5rem; font-weight: 300; line-height: 1.6; margin-bottom: 1.6rem; }
+  .footer__link-alt { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg); border-bottom: 1px solid var(--red); padding-bottom: 0.2rem; transition: color 0.3s var(--ease); }
+  .footer__link-alt:hover { color: var(--red); }
 
-  .footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 4rem; flex-wrap: wrap; gap: 2rem; font-size: 1.3rem; color: var(--fg-faint); }
+  .footer__link { display: block; padding: 0.6rem 0; color: var(--fg-dim); font-size: 1.5rem; font-weight: 400; transition: color 0.3s var(--ease), transform 0.3s var(--ease); }
+  .footer__link:hover { color: var(--fg); transform: translateX(0.6rem); }
+  .footer__link::before { content: '—'; position: absolute; left: -2rem; opacity: 0; color: var(--red); transition: opacity 0.3s var(--ease); }
+  .footer__link:hover::before { opacity: 1; }
+  .footer__link-container { position: relative; }
+
+  .footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 4rem; border-top: 1px solid var(--line-soft); flex-wrap: wrap; gap: 2rem; font-size: 1.3rem; color: var(--fg-faint); }
   .footer__legal { display: flex; gap: 3rem; }
   .footer__legal a:hover { color: var(--fg); }
+  
   .footer__top-btn { display: flex; align-items: center; gap: 1rem; color: var(--fg-faint); font-weight: 500; transition: color 0.3s var(--ease); }
   .footer__top-btn:hover { color: var(--red); }
-  .footer__top-btn svg { width: 1.6rem; height: 1.6rem; transform: rotate(-90deg); }
+  .footer__top-btn svg { width: 1.6rem; height: 1.6rem; transform: rotate(-90deg); transition: transform 0.3s var(--ease); }
+  .footer__top-btn:hover svg { transform: rotate(-90deg) translateX(0.4rem); } /* slight upward boost on hover */
 
-  @media (max-width: 880px) { .footer__cols { grid-template-columns: repeat(2, 1fr); row-gap: 5rem; } }
+  @media (max-width: 960px) { 
+    .footer__top { grid-template-columns: 1fr; gap: 6rem; } 
+    .footer__watermark { top: 2rem; font-size: 25vw; }
+  }
+  @media (max-width: 640px) {
+    .footer__data-cols { grid-template-columns: 1fr; gap: 4rem; }
+  }
   @media (max-width: 560px) {
     :root { --nav-offset: 8rem; }
-    .wrap { padding: 0 6vw; } .nav { padding: 2rem 6vw; } .section { padding: 9rem 0; } .footer { padding: 8rem 0 3rem; } .footer__cols { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .wrap { padding: 0 6vw; } .nav { padding: 2rem 6vw; } .section { padding: 9rem 0; } 
+    .footer { padding: 10rem 0 3rem; } 
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -559,7 +594,7 @@
       <a href="https://www.linkedin.com/in/raziealfiedan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
     <div class="menu__contact">
-      <a href="https://wa.me/60165867492" target="_blank" rel="noopener noreferrer">+60 16-586 7492</a>
+      <a href="https://wa.me/601131723205" target="_blank" rel="noopener noreferrer">+6011-31723205</a>
     </div>
   </div>
 </div>
@@ -1088,7 +1123,7 @@
     <div class="big-cta__overlay"></div>
     <div class="wrap big-cta__content">
       <h2 class="big-cta__title">Ready to <br><em>Roll?</em></h2>
-      <a href="https://wa.me/60165867492" target="_blank" rel="noopener noreferrer" class="big-cta__btn">
+      <a href="https://wa.me/601131723205" target="_blank" rel="noopener noreferrer" class="big-cta__btn">
         Get in touch with us
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -1098,44 +1133,67 @@
 </main>
 
 <footer class="footer">
+  <!-- Massive Cinematic Background Text -->
+  <div class="footer__watermark" aria-hidden="true">RAYRITY</div>
+  
   <div class="wrap">
     <div class="footer__top">
-      <div>
-        <div class="footer__brand"><span class="footer__brand-mark" aria-hidden="true"></span>RAYRITY FILMS</div>
-        <p class="footer__tag">An independent Sabahan production company crafting cinematic experiences.</p>
+      
+      <!-- Brand & Manifesto (Left Column) -->
+      <div class="footer__brand-col">
+        <div class="footer__brand">
+          <span class="footer__brand-mark" aria-hidden="true"></span>RAYRITY FILMS
+        </div>
+        <p class="footer__tag">An independent production collective building narratives frame by frame. We give motion to the unseen.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/cliff_ray/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@cliffordray2853" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/raziealfiedan/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><path d="M12 16v-3a2 2 0 0 1 4 0v3"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="footer__social">
-        <a href="https://www.instagram.com/cliff_ray/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
-        <a href="https://www.youtube.com/@cliffordray2853" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
-        <a href="https://www.linkedin.com/in/raziealfiedan/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><path d="M12 16v-3a2 2 0 0 1 4 0v3"/></svg></a>
+      
+      <!-- Slate Details Grid (Right Columns) -->
+      <div class="footer__data-cols">
+        
+        <div class="footer__col">
+          <div class="footer__col-title">Studio Location</div>
+          <p class="footer__text">Donggongon, Penampang<br>Sabah, Malaysia</p>
+          <a href="https://maps.app.goo.gl/jqPH98uQGJG2Mj1i9" class="footer__link-alt">View on Map</a>
+        </div>
+        
+        <div class="footer__col">
+          <div class="footer__col-title">Direct Inquiries</div>
+          <div class="footer__link-container">
+            <a href="https://wa.me/601131723205" target="_blank" rel="noopener noreferrer" class="footer__link">+6011-31723205</a>
+          </div>
+          <div class="footer__link-container">
+            <a href="mailto:hello@rayrityfilms.com" class="footer__link">rayrity.films@gmail.com</a>
+          </div>
+        </div>
+        
+        <div class="footer__col">
+          <div class="footer__col-title">Index</div>
+          <div class="footer__link-container"><a href="#about" class="footer__link">About Us</a></div>
+          <div class="footer__link-container"><a href="#work" class="footer__link">Selected Work</a></div>
+          <div class="footer__link-container"><a href="#services" class="footer__link">Disciplines</a></div>
+          <div class="footer__link-container"><a href="#team" class="footer__link">Directors</a></div>
+        </div>
+        
       </div>
     </div>
 
-    <div class="footer__cols">
-      <div class="footer__col">
-        <div class="footer__col-title">Company</div>
-        <a href="#about">About Us</a>
-        <a href="#team">The Directors</a>
-        <a href="#">Careers & Crew</a>
-      </div>
-      <div class="footer__col">
-        <div class="footer__col-title">Work</div>
-        <a href="#work">Filmography</a>
-        <a href="#work">Commercials</a>
-        <a href="#work">Music Videos</a>
-      </div>
-      <div class="footer__col">
-        <div class="footer__col-title">Contact</div>
-        <a href="https://wa.me/60165867492" target="_blank" rel="noopener noreferrer">+60 16-586 7492</a>
-        <a href="#">Studio Location</a>
-      </div>
-    </div>
-
+    <!-- Bottom Legal Bar -->
     <div class="footer__bottom">
       <span>© <span id="year"></span> Rayrity Films. All rights reserved.</span>
       <div class="footer__legal">
-        <a href="#">Legal</a>
-        <a href="#">Privacy</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
       </div>
       <button class="footer__top-btn" id="backToTop">
         Back to top
@@ -1229,6 +1287,22 @@
   /* ---------- Mobile menu ---------- */
   var menuToggle = document.getElementById('menuToggle');
   var menuOverlay = document.getElementById('menuOverlay');
+  function getFocusable(container){
+    return Array.prototype.slice.call(container.querySelectorAll(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )).filter(function(el){ return el.offsetParent !== null; });
+  }
+  function trapFocus(e, container){
+    if (e.key !== 'Tab') return;
+    var focusable = getFocusable(container);
+    if (!focusable.length) return;
+    var first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  }
   function closeMenu(){
     menuOverlay.classList.remove('is-open');
     menuOverlay.setAttribute('aria-hidden', 'true');
@@ -1238,6 +1312,8 @@
     menuOverlay.classList.add('is-open');
     menuOverlay.setAttribute('aria-hidden', 'false');
     menuToggle.setAttribute('aria-expanded', 'true');
+    var focusable = getFocusable(menuOverlay);
+    if (focusable.length) focusable[0].focus();
   }
   menuToggle.addEventListener('click', function(){
     var isOpen = menuOverlay.classList.contains('is-open');
@@ -1245,9 +1321,12 @@
   });
   menuOverlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
   document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape' && menuOverlay.classList.contains('is-open')) {
+    if (!menuOverlay.classList.contains('is-open')) return;
+    if (e.key === 'Escape') {
       closeMenu();
       menuToggle.focus();
+    } else {
+      trapFocus(e, menuOverlay);
     }
   });
 
@@ -1357,7 +1436,12 @@
     if (e.target === videoModal) closeVideoModal();
   });
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && videoModal.classList.contains('is-active')) closeVideoModal();
+    if (!videoModal.classList.contains('is-active')) return;
+    if (e.key === 'Escape') {
+      closeVideoModal();
+    } else {
+      trapFocus(e, videoModal);
+    }
   });
 
   /* ---------- Back to top ---------- */
