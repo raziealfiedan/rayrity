@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Rayrity Films — Cinematic Production Company in Sabah</title>
 <meta name="description" content="Rayrity Films is an independent cinematic production company based in Kota Kinabalu, Sabah. We build narratives, frame by frame, for those who refuse the obvious.">
 <meta name="robots" content="index, follow">
@@ -35,7 +35,7 @@
   "name": "Rayrity Films",
   "description": "Independent cinematic production company based in Kota Kinabalu, Sabah, producing narrative film, esports content, commercials and music videos.",
   "url": "https://rayrityfilms.com/",
-  "telephone": "+60165867492",
+  "telephone": "+601131723205",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Penampang",
@@ -73,12 +73,18 @@
   }
 
   * { box-sizing: border-box; }
-  html { font-size: 62.5%; scroll-behavior: smooth; background: var(--bg); scroll-padding-top: var(--nav-offset); }
+  html {
+    font-size: 62.5%; scroll-behavior: smooth; background: var(--bg); scroll-padding-top: var(--nav-offset);
+    overflow-x: hidden; width: 100%;
+    /* Stops Android Chrome's automatic text-size boosting from inflating rem-based
+       layout (logo, nav padding, etc.) independently of the rest of the page. */
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
+  }
   body {
     margin: 0; background: var(--bg); color: var(--fg);
     font-family: var(--font-body); font-size: 1.6rem; line-height: 1.65;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    overflow-x: hidden; width: 100%; position: relative;
   }
   img { max-width: 100%; display: block; height: auto; }
   a { color: inherit; text-decoration: none; transition: color 0.3s var(--ease), transform 0.3s var(--ease); }
@@ -135,11 +141,15 @@
   /* ---------- Header ---------- */
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+    width: 100%; max-width: 100vw;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 2.8rem 5vw; transition: background 0.4s var(--ease), padding 0.4s var(--ease), border-color 0.4s var(--ease);
+    padding: 2.8rem clamp(2rem, 5vw, 6rem);
+    padding-left: max(clamp(2rem, 5vw, 6rem), env(safe-area-inset-left));
+    padding-right: max(clamp(2rem, 5vw, 6rem), env(safe-area-inset-right));
+    transition: background 0.4s var(--ease), padding 0.4s var(--ease), border-color 0.4s var(--ease);
     border-bottom: 1px solid transparent;
   }
-  .nav.is-scrolled { background: rgba(5, 5, 5, 0.95); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); padding: 1.8rem 5vw; border-color: var(--line); }
+  .nav.is-scrolled { background: rgba(5, 5, 5, 0.95); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); padding-top: 1.8rem; padding-bottom: 1.8rem; border-color: var(--line); }
   .nav__logo { display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-display); font-size: 2.6rem; letter-spacing: 0.05em; z-index: 901; }
   .nav__logo-mark { width: 1.2rem; height: 1.2rem; background: var(--red); display: inline-block; }
   .nav__links { display: flex; gap: 3.6rem; }
@@ -178,9 +188,15 @@
   .menu__contact a:hover { color: var(--red); }
 
   /* ---------- Hero ---------- */
-  .hero { position: relative; height: 100vh; min-height: 60rem; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+  .hero { position: relative; height: 100vh; height: 100dvh; min-height: 60rem; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
   .hero__bg-wrap { position: absolute; inset: 0; overflow: hidden; }
-  .hero__bg { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.2) brightness(0.7); transform: scale(1); animation: kenburns 25s ease-out infinite alternate; }
+  .hero__bg { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; filter: grayscale(1) contrast(1.2) brightness(0.7); transform: scale(1); animation: kenburns 25s ease-out infinite alternate; }
+  /* A full-height hero on a tall, narrow phone screen forces object-fit:cover to crop
+     a landscape photo down to a thin vertical sliver. Shortening the hero on small
+     screens keeps its aspect ratio closer to the source photo's, so far less gets cropped. */
+  @media (max-width: 640px) {
+    .hero { height: 82vh; height: 82dvh; min-height: 46rem; }
+  }
   @keyframes kenburns { from { transform: scale(1) translate(0, 0); } to { transform: scale(1.08) translate(-1%, -1%); } }
   .hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0.7) 50%, rgba(5,5,5,1) 100%); }
   .hero__content { position: relative; z-index: 2; padding: 0 5vw 8vh; max-width: var(--maxw); margin: 0 auto; width: 100%; }
@@ -267,10 +283,13 @@
   .marquee__track {
     display: flex; width: max-content;
     animation: scrollMarquee 40s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
   .marquee__track img {
     height: clamp(250px, 40vw, 400px); width: auto; aspect-ratio: 16/9; object-fit: cover;
+    flex-shrink: 0;
     margin-right: 1.2rem;
     filter: grayscale(1) contrast(1.2);
     transition: filter 0.6s var(--ease);
@@ -296,14 +315,17 @@
   }
 
   /* ---------- Parallax Banner Break ---------- */
-  .banner-break { height: 100vh; min-height: 40rem; position: relative; overflow: hidden; border-top: 1px solid var(--line-soft); }
+  .banner-break { height: 100vh; height: 100dvh; min-height: 40rem; position: relative; overflow: hidden; border-top: 1px solid var(--line-soft); }
   .banner-break__bg { 
     position: absolute; inset: 0; 
-    background-size: cover; background-position: center; background-attachment: fixed; 
+    background-size: cover; background-position: center 35%; background-attachment: fixed; 
     filter: grayscale(1) contrast(1.2);
   }
   .banner-break__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,5,5,1) 0%, rgba(5,5,5,0.4) 50%, rgba(5,5,5,1) 100%); }
-  @media(max-width: 960px) { .banner-break__bg { background-attachment: scroll; } } /* Fallback for mobile */
+  @media(max-width: 960px) {
+    .banner-break__bg { background-attachment: scroll; } /* Fallback for mobile */
+    .banner-break { height: 60vh; height: 60dvh; min-height: 32rem; } /* Less crop on a narrow/tall viewport */
+  }
 
   /* ---------- Services / What We Do ---------- */
   .services { position: relative; }
@@ -547,12 +569,19 @@
   }
   @media (max-width: 560px) {
     :root { --nav-offset: 8rem; }
-    .wrap { padding: 0 6vw; } .nav { padding: 2rem 6vw; } .section { padding: 9rem 0; } 
+    .wrap { padding: 0 6vw; } .nav { padding-top: 2rem; padding-bottom: 2rem; } .section { padding: 9rem 0; } 
     .footer { padding: 10rem 0 3rem; } 
   }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; } .hero__bg, .banner-break__bg { animation: none; background-attachment: scroll; } .hero__chevron { animation: none; } .rec-dot { animation: none; }
+    /* IMPORTANT: infinite animations (the photo marquees, the brand ticker) must be fully
+       stopped with `animation: none`, not sped up. Compressing their duration to 0.01ms
+       via the blanket rule below still runs every loop, just hundreds of times a second,
+       which reads as a rapid strobing glitch on iOS. Listing them first and using
+       !important on animation-name keeps them stopped even though the blanket rule
+       below also touches animation-duration on the same elements. */
+    .marquee__track, .client-ticker__track { animation: none !important; }
     * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   }
 </style>
@@ -1087,7 +1116,7 @@
           <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
 
-        <a href="https://www.youtube.com/embed/FvxXonzDB-Q" class="work-item" data-category="comercial" aria-label="V21 Residence">
+        <a href="https://www.youtube.com/embed/FvxXonzDB-Q" class="work-item" data-category="commercial" aria-label="V21 Residence">
           <img class="work-item__img" src="https://img.youtube.com/vi/FvxXonzDB-Q/hqdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Promo Video</span>
@@ -1096,7 +1125,7 @@
           <div class="work-item__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
         
-        <a href="https://www.youtube.com/embed/Nmg-HkXPN0I" class="work-item" data-category="comercial" aria-label="GHKK Dr Talal">
+        <a href="https://www.youtube.com/embed/Nmg-HkXPN0I" class="work-item" data-category="commercial" aria-label="GHKK Dr Talal">
           <img class="work-item__img" src="https://img.youtube.com/vi/Nmg-HkXPN0I/hqdefault.jpg" alt="" loading="lazy" decoding="async">
           <div class="work-item__overlay">
             <span class="work-item__role">Medical Promo</span>
@@ -1173,7 +1202,7 @@
             <a href="https://wa.me/601131723205" target="_blank" rel="noopener noreferrer" class="footer__link">+6011-31723205</a>
           </div>
           <div class="footer__link-container">
-            <a href="mailto:hello@rayrityfilms.com" class="footer__link">rayrity.films@gmail.com</a>
+            <a href="mailto:rayrity.films@gmail.com" class="footer__link">rayrity.films@gmail.com</a>
           </div>
         </div>
         
